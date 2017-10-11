@@ -1,0 +1,9 @@
+.envrc
+tags
+GPATH
+GRTAGS
+GTAGS
+.autoenv.zsh
+.autoenv_leave.zsh
+.vscode/
+debug

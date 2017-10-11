@@ -1,0 +1,11 @@
+{
+  "Style": {
+    "Selected": ["on_blue","white"],
+    "Matched": ["yellow"]
+  },
+  "Keymap": {
+    "C-q": "peco.ToggleSingleKeyJump",
+    "C-e": "peco.RotateFilter"
+  },
+  "InitialFilter": "SmartCase"
+}

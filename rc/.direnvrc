@@ -1,0 +1,85 @@
+# -*- mode: sh -*-
+# vi: set ft=sh :
+
+# direnv edit .
+
+# utility function
+
+# PATH operation
+# http://qiita.com/ironsand/items/10e28d7589298090ec23
+path_append()  { path_remove $1; export PATH="$PATH:$1"; }
+path_prepend() { path_remove $1; export PATH="$1:$PATH"; }
+path_remove()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
+
+# e.g.
+# use ruby 2.1.5
+use_ruby() {
+  case "$#" in
+    0)
+      local version="$(ruby --version | awk '{print $2}')"
+      local default=1
+      ;;
+    1)
+      local version="$1"
+      local default=0
+      ;;
+    *)
+      echo "Too many arguments."
+      return 1
+      ;;
+  esac
+
+  local version0="$(echo $version | sed -r "s/(^.*\.).*/\10/")"
+  if [ "$version0" = "1.8.0" ]; then
+    version0="1.8"
+  fi
+  local vendor_path="$PWD/vendor/bundle/ruby/$version0"
+
+  if [ -e "$HOME/local/ruby-$version" \
+       -o "$default" -eq 1 ]; then
+    [ "$default" -ne 1 ] && PATH_add "$HOME/local/ruby-$version/bin"
+    [ ! -e "$vendor_path" ] && mkdir -p $vendor_path
+    [ ! -e "$PWD/Gemfile" ] && echo "source 'https://rubygems.org'" > $PWD/Gemfile
+    export GEM_HOME="$vendor_path"
+    export BUNDLE_BIN="$vendor_path/bin"
+    PATH_add $BUNDLE_BIN
+  else
+    echo "Ruby '${version}' is not installed."
+    return 1
+  fi
+}
+
+# e.g.
+# use go 1.4.2
+use_go() {
+  case "$#" in
+    0)
+      local version="$(go version | sed -r "s/^go[^1-9]+(.+) .+/\1/")"
+      local default=1
+      ;;
+    1)
+      local version="$1"
+      local default=0
+      ;;
+    *)
+      echo "Too many arguments."
+      return 1
+      ;;
+  esac
+
+  if [ -e "$HOME/local/go-$version" \
+       -o "$default" -eq 1 ]; then
+    if [ "$default" -eq 0 ]; then
+      export GOROOT="$HOME/local/go-$version"
+      export GOPATH="$PWD/_vendor:$HOME/local/go-1.4.2-pkg"
+      path_prepend $HOME/local/go-$version-pkg/bin:$GOROOT/bin
+      path_remove $HOME/.go/bin
+    else
+      export GOPATH="$PWD/_vendor:$HOME/.go"
+    fi
+    path_prepend $PWD/_vendor/bin
+  else
+    echo "Go '${version}' is not installed."
+    return 1
+  fi
+}
