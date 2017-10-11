@@ -52,7 +52,7 @@ alias g=git
 
 # ripgrep
 if type rg > /dev/null 2>&1; then
-  alias rg="rg --hidden --smart-case"
+  alias rg="rg --hidden --smart-case --glob='!.git/'"
 fi
 
 # cd
