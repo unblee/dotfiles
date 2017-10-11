@@ -1,6 +1,6 @@
 # dotfiles
 
-**Note: This repository is personal and I don't expect others to use it!
+**Note: This repository is personal and I don't expect others to use it!**
 
 ## Intallation
 
