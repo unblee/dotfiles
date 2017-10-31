@@ -3,9 +3,9 @@ set guioptions-=T
 
 " フォント設定
 if IsWindows()
-  set guifont=CicaE:h12:qANTIALIASED
+  set guifont=Cica:h12:qANTIALIASED
 else
-  set guifont=CicaE\ 12
+  set guifont=Cica\ 12
 endif
 
  GVIMのメニュー文字化け防止
