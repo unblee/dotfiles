@@ -462,7 +462,7 @@ let g:ruby_indent_block_style = 'do'
 [[plugins]]
 # nginx
 on_ft = 'nginx'
-repo = 'evanmiller/nginx-vim-syntax'
+repo = 'chr4/nginx.vim'
 
 [[plugins]]
 # json
