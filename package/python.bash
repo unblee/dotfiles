@@ -9,3 +9,4 @@ pip3 install --upgrade --user jedi
 pip3 install --upgrade --user mypy
 pip3 install --upgrade --user yapf
 pip3 install --upgrade --user pygments
+pip3 install --upgrade --user yamllint
