@@ -17,3 +17,4 @@ $npm_cmd stylefmt
 $npm_cmd prettier-eslint
 $npm_cmd prettier-eslint-cli
 $npm_cmd editorconfig-cli
+$npm_cmd now
