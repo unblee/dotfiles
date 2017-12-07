@@ -8,6 +8,7 @@ go get -u -v github.com/derekparker/delve/cmd/dlv
 go get -u -v github.com/elazarl/go-bindata-assetfs/...
 go get -u -v github.com/fatih/gomodifytags
 go get -u -v github.com/golang/dep/cmd/dep
+go get -u -v github.com/haya14busa/goplay/cmd/goplay
 go get -u -v github.com/josharian/impl
 go get -u -v github.com/jteeuwen/go-bindata/...
 go get -u -v github.com/k0kubun/pp
