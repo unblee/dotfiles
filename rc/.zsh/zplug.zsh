@@ -4,11 +4,11 @@
 
 if [[ -d $ZPLUG_HOME ]]; then
 else
-  git clone https://github.com/b4b4r07/zplug $ZPLUG_HOME
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 source $ZPLUG_HOME/init.zsh
 
-zplug "zplug/zplug"
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
