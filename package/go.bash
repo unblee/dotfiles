@@ -1,8 +1,5 @@
 #!/bin/bash
 
-go get -u -v github.com/alecthomas/gometalinter
-gometalinter --install --update
-
 go get -u -v github.com/cweill/gotests/...
 go get -u -v github.com/derekparker/delve/cmd/dlv
 go get -u -v github.com/elazarl/go-bindata-assetfs/...

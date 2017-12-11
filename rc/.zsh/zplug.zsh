@@ -69,6 +69,11 @@ zplug "junegunn/fzf-bin", \
   from:gh-r, \
   rename-to:fzf${zplug_file_suffix}
 
+zplug "alecthomas/gometalinter", \
+  as:command, \
+  from:gh-r, \
+  rename-to:gometalinter${zplug_file_suffix}
+
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
