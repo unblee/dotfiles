@@ -25,6 +25,7 @@ go get -u -v github.com/nsf/gocode
 go get -u -v github.com/pwaller/goimports-update-ignore
 go get -u -v github.com/ramya-rao-a/go-outline
 go get -u -v github.com/rogpeppe/godef
+go get -u -v github.com/spf13/cobra/cobra
 go get -u -v github.com/tpng/gopkgs
 go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
 go get -u -v golang.org/x/tools/cmd/godoc
