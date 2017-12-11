@@ -64,6 +64,11 @@ zplug "takaaki-kasai/git-foresta", \
   as:command, \
   use:git-foresta
 
+zplug "junegunn/fzf-bin", \
+  as:command, \
+  from:gh-r, \
+  rename-to:fzf${zplug_file_suffix}
+
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
