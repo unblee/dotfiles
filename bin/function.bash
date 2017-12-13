@@ -75,3 +75,13 @@ PROMPT=${_prompt}
 EOF
   echo 'deactivate' > "${TD}/.autoenv_leave.zsh"
 }
+
+cmd_exists minikube
+if [[ $? == 0 ]]; then
+  minikube-start-with-docker-env() {
+    minikube start
+    echo "Load 'minikube docker-env'"
+    eval $(minikube docker-env)
+  }
+fi
+

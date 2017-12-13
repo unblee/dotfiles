@@ -7,15 +7,46 @@
 #
 
 #
+# function
+#
+
+source ${DOTFILES}/bin/function.bash
+
+#
+# completion
+#
+
+# travis gem
+[ -f /home/unblee/.travis/travis.sh ] && source /home/unblee/.travis/travis.sh
+
+COMPLETIONS_DIR=${DOTFILES}/rc/.zsh/completions
+
+# kubectl(k8s) completion
+cmd_exists kubectl
+[[ $? == 0 ]] && kubectl completion zsh > ${COMPLETIONS_DIR}/_kubectl
+
+# helm(k8s) completion
+cmd_exists helm
+[[ $? == 0 ]] && eval helm completion zsh > ${COMPLETIONS_DIR}/_helm
+
+# kops(k8s) completion
+cmd_exists kops
+[[ $? == 0 ]] && eval kops completion zsh > ${COMPLETIONS_DIR}/_kops
+
+# aws-cli completion
+cmd_exists aws_zsh_completer.sh
+[[ $? == 0 ]] && source aws_zsh_completer.sh
+
+# rustup completion
+cmd_exists rustup
+[[ $? == 0 ]] && eval rustup completions zsh > ${COMPLETIONS_DIR}/_rustup
+
+#
 # settings for fpath
 # NOTE: set fpath before compinit
 #
 
-fpath=(
-"${DOTFILES}"/rc/.zsh/functions(N-/)
-"${DOTFILES}"/rc/.zsh/functions/*(N-/)
-"${fpath[@]}"
-)
+fpath+=${COMPLETIONS_DIR}
 
 #
 # keybind
@@ -158,12 +189,6 @@ source ${DOTFILES}/rc/.zsh/zplug.zsh
 
 
 #
-# function
-#
-
-source ${DOTFILES}/bin/function.bash
-
-#
 # alias
 #
 
@@ -260,38 +285,6 @@ if [[ $? == 0 ]]; then
       :  # Start terminal normally
     fi
   fi
-fi
-
-#
-# completion
-#
-
-# travis gem
-[ -f /home/unblee/.travis/travis.sh ] && source /home/unblee/.travis/travis.sh
-
-# kubectl(k8s) completion
-cmd_exists kubectl
-[[ $? == 0 ]] && eval "$(kubectl completion zsh)"
-
-# helm(k8s) completion
-cmd_exists helm
-[[ $? == 0 ]] && eval "$(helm completion zsh)"
-
-# kops(k8s) completion
-cmd_exists kops
-[[ $? == 0 ]] && eval "$(kops completion zsh)"
-
-# aws-cli completion
-cmd_exists aws_zsh_completer.sh
-[[ $? == 0 ]] && source aws_zsh_completer.sh
-
-cmd_exists minikube
-if [[ $? == 0 ]]; then
-  minikube-start-with-docker-env() {
-    minikube start
-    echo "Load 'minikube docker-env'"
-    eval $(minikube docker-env)
-  }
 fi
 
 #
