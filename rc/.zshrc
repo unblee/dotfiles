@@ -293,3 +293,8 @@ fi
 
 [[ -e ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local
 
+cmd_exists gocomplete
+if [[ $? == 0 ]]; then
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C ${GOPATH}/bin/gocomplete go
+fi

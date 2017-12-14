@@ -19,6 +19,7 @@ go get -u -v github.com/motemen/gore
 go get -u -v github.com/mvdan/unparam
 go get -u -v github.com/newhook/go-symbols
 go get -u -v github.com/nsf/gocode
+go get -u -v github.com/posener/complete/gocomplete
 go get -u -v github.com/pwaller/goimports-update-ignore
 go get -u -v github.com/ramya-rao-a/go-outline
 go get -u -v github.com/rogpeppe/godef
