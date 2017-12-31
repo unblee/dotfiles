@@ -1,5 +1,4 @@
 set inccommand=split
-set hlsearch
 
 " python
 let g:python_host_prog  = '/usr/bin/python2'
