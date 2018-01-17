@@ -1,71 +1,72 @@
 [user]
-	name = unblee
-	email = unblee@users.noreply.github.com
+  name = unblee
+  email = unblee@users.noreply.github.com
 [color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
-	autocrlf = input
-	preloadindex = true
-	fscache = true
-	filemode = true
+  editor = vim
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+  preloadindex = true
+  fscache = true
+  filemode = true
 [push]
-	default = simple
+  default = simple
 [help]
-	autocorrect = -1
+  autocorrect = -1
 [pager]
   log  = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
   show = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
   diff = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
 [diff]
   compactionHeuristic = true
+  colorMoved = zebra
 [difftool]
-	prompt = false
+  prompt = false
 [mergetool]
-	prompt = false
+  prompt = false
 [interactive]
-	singlekey = true
+  singlekey = true
   diffFilter = (diff-highlight 2>/dev/null || cat)
 [fetch]
-	prune = true
+  prune = true
 [pull]
-	ff = only
+  ff = only
 [alias]
-	amend = commit --amend
-	back = checkout "-"
-	branches = branch -a
-	branchout = checkout -b
-	contributors = shortlog -s -n
-	discard = checkout --
-	filetrail = git log --follow -p -w
-	graph = log --graph --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
-	history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
-	invert = revert
-	last = log -1 HEAD --format=format:"%Cred%H"
-	mergetrail = log --ancestry-path --merges
-	move = mv
-	nevermind = !git reset --hard HEAD && git clean -d -f
-	precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
-	prestage = diff -w --word-diff=color
-	remotes = remote -v
-	remove = rm
-	resave = commit --amend
-	rewrite = rebase -i
-	s = status --short
-	save = commit -m
-	stashes = stash list
-	summary = status -u -s
-	tags = tag
-	uncommit = reset --mixed HEAD~
-	unmerged = branch --no-merged
-	unmerged = diff --name-only --diff-filter=U
-	unstage = reset -q HEAD --
-	unstash = stash pop
-	untrack = rm -r --cached
-	what = show -w
+  amend = commit --amend
+  back = checkout "-"
+  branches = branch -a
+  branchout = checkout -b
+  contributors = shortlog -s -n
+  discard = checkout --
+  filetrail = git log --follow -p -w
+  graph = log --graph --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+  history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
+  invert = revert
+  last = log -1 HEAD --format=format:"%Cred%H"
+  mergetrail = log --ancestry-path --merges
+  move = mv
+  nevermind = !git reset --hard HEAD && git clean -d -f
+  precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
+  prestage = diff -w --word-diff=color
+  remotes = remote -v
+  remove = rm
+  resave = commit --amend
+  rewrite = rebase -i
+  s = status --short
+  save = commit -m
+  stashes = stash list
+  summary = status -u -s
+  tags = tag
+  uncommit = reset --mixed HEAD~
+  unmerged = branch --no-merged
+  unmerged = diff --name-only --diff-filter=U
+  unstage = reset -q HEAD --
+  unstash = stash pop
+  untrack = rm -r --cached
+  what = show -w
 [commit]
-	verbose = true
+  verbose = true
