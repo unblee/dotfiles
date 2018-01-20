@@ -159,6 +159,12 @@ call plug#begin(s:plugged_dir)
   " filer
   Plug 'cocopon/vaffle.vim'
 
+  " fuzzy finder
+  if executable('fzf')
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
+  endif
+
 call plug#end()
 " }}
 
