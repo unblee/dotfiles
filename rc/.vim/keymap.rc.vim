@@ -1,13 +1,3 @@
-" <C-w> + HJKL でウィンドウサイズを変更
-nnoremap <C-w>H <C-w><<CR>
-nnoremap <C-w>J <C-w>-<CR>
-nnoremap <C-w>K <C-w>+<CR>
-nnoremap <C-w>L <C-w>><CR>
-
-" visual mode でのインデント操作を繰り返し行えるようにする
-vnoremap < <gv
-vnoremap > >gv
-
 " 行単位ではなく表示された文字を移動できるようにする
 nnoremap j gj
 nnoremap k gk
@@ -30,3 +20,7 @@ vnoremap <Leader>y "+y
 " インクリメント、デクリメント
 nnoremap + <C-a>
 nnoremap - <C-x>
+
+" タブ移動
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
