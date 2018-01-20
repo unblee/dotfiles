@@ -118,6 +118,7 @@ call plug#begin(s:plugged_dir)
 
   " asynchronous linter
   Plug 'w0rp/ale'
+  Plug 'maximbaz/lightline-ale'
 
   " ビジュアル選択した状態でIやAを入力した場合でも
   " 行頭や行末に文字列を挿入してくれるようになる
