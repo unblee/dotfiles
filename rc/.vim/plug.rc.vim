@@ -165,6 +165,9 @@ call plug#begin(s:plugged_dir)
     Plug 'junegunn/fzf.vim'
   endif
 
+  " window resizer
+  Plug 'simeji/winresizer'
+
 call plug#end()
 " }}
 
