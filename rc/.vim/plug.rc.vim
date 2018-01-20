@@ -42,6 +42,9 @@ call plug#begin(s:plugged_dir)
   Plug 'fszymanski/deoplete-emoji', { 'for': 'markdown' }
   Plug 'rhysd/vim-gfm-syntax', { 'for': 'markdown' }
 
+  " vim
+  Plug 'Shougo/neco-vim', { 'for': 'vim' }
+
   " 現在のカーソル位置のコンテキストによって filetype を切り換える
   Plug 'Shougo/context_filetype.vim'
   Plug 'osyo-manga/vim-precious'
