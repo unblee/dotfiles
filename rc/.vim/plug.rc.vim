@@ -35,7 +35,7 @@ call plug#begin(s:plugged_dir)
   endif
 
   " golang
-  Plug 'fatih/vim-go', { 'do': 'GoInstallBinaries', 'for': 'go' }
+  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
   Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
 
   " markdown
