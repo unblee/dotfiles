@@ -129,7 +129,7 @@ set display+=lastline
 set pumheight=10
 
 " updatetime(ms)
-set updatetime=1000
+set updatetime=100
 
 " 80文字目で線を表示
 set colorcolumn=80
