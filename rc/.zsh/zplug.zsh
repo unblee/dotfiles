@@ -16,12 +16,6 @@ zplug "zsh-users/zsh-completions"
 
 zplug "mollifier/anyframe"
 
-zplug "docker/docker"
-fpath=(${HOME}/.zplug/repos/docker/docker/contrib/completion/zsh $fpath)
-
-zplug "docker/compose"
-fpath=(${HOME}/.zplug/repos/docker/compose/contrib/completion/zsh $fpath)
-
 zplug "tcnksm/docker-alias", use:zshrc
 
 zplug "peco/peco", \
@@ -39,11 +33,6 @@ zplug "unblee/t", \
   rename-to:t${zplug_file_suffix}, \
   as:command
 
-zplug "monochromegane/the_platinum_searcher", \
-  from:gh-r, \
-  rename-to:pt${zplug_file_suffix}, \
-  as:command
-
 zplug "b4b4r07/http_code", \
   as:command, \
   use:bin/http_code
@@ -53,11 +42,6 @@ zplug "simeji/jid", \
   rename-to:jid${zplug_file_suffix}, \
   as:command
 
-zplug "mattn/memo", \
-  from:gh-r, \
-  rename-to:memo${zplug_file_suffix}, \
-  as:command
-
 zplug "Tarrasch/zsh-autoenv"
 
 zplug "takaaki-kasai/git-foresta", \
@@ -65,14 +49,15 @@ zplug "takaaki-kasai/git-foresta", \
   use:git-foresta
 
 zplug "junegunn/fzf-bin", \
-  as:command, \
   from:gh-r, \
-  rename-to:fzf${zplug_file_suffix}
+  rename-to:fzf${zplug_file_suffix}, \
+  as:command
 
 zplug "alecthomas/gometalinter", \
-  as:command, \
   from:gh-r, \
-  rename-to:gometalinter${zplug_file_suffix}
+  rename-to:gometalinter${zplug_file_suffix}, \
+  as:command, \
+  at:v2.0.3
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
