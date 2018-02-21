@@ -259,7 +259,7 @@ if [[ $? == 0 ]]; then
 
     create_new_session="Create New Session"
     TMUX_ID="${create_new_session}:\n${TMUX_ID}"
-    TMUX_ID=`echo ${TMUX_ID} | peco | cut -d: -f1`
+    TMUX_ID=`echo ${TMUX_ID} | fzf --reverse | cut -d: -f1`
 
     if [[ "$TMUX_ID" == "${create_new_session}" ]]; then
       tmux new-session

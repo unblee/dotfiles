@@ -26,12 +26,12 @@ type nvim > /dev/null 2>&1
 [ $? -eq 0 ] && alias vim=nvim
 alias vi=vim
 
-# peco
-if type files > /dev/null 2>&1 && type peco > /dev/null 2>&1; then
-  alias vip='F=`files|peco --initial-filter=Fuzzy`;[ -n "$F" ]&&vim "$F"||:'
+# fzf
+if type files > /dev/null 2>&1 && type fzf > /dev/null 2>&1; then
+  alias vip='F=`files|fzf --reverse --height 70%`;[ -n "$F" ]&&vim "$F"||:'
   alias cdu='cd `git rev-parse --show-toplevel`'
-  alias cip='TD=`git rev-parse --show-toplevel 2> /dev/null`;cd $TD/`files -d $TD|sed "s|${TD}/||g;s|^$|\.|"|peco --initial-filter=Fuzzy`'
-  alias gap="git ls-files --modified | peco | xargs git add && git status --short --branch"
+  alias cip='TD=`git rev-parse --show-toplevel 2> /dev/null`;cd $TD/`files -d $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`'
+  alias gap="git ls-files --modified | fzf --reverse --multi | xargs git add && git status --short --branch"
 fi
 
 # clipboard
