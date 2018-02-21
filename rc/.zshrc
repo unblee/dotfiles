@@ -223,20 +223,6 @@ if [ -e ${HOME}/.anyenv ]; then
   eval "$(anyenv init -)"
 fi
 
-# ghq で管理されているディレクトリに移動
-cmd_exists ghq
-if [[ $? == 0 ]]; then
-  ghq_cd() {
-    local cd_target=$(find "${GHQ_ROOT}" -maxdepth 3 -type d | sed "1d; s|${GHQ_ROOT}/||" | peco)
-    if [[ -n ${cd_target} ]]; then
-      cd "${GHQ_ROOT}/${cd_target}"
-    fi
-    zle accept-line
-  }
-  zle -N ghq_cd
-  bindkey "^]" ghq_cd
-fi
-
 #
 # prompt
 #

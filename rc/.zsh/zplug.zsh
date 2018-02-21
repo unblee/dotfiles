@@ -1,3 +1,5 @@
+source ${DOTFILES}/bin/function.bash
+
 [[ ${PLATFORM} == "windows" ]] \
   && zplug_file_suffix=".exe" \
   || zplug_file_suffix=""
@@ -13,8 +15,6 @@ zplug "zplug/zplug", hook-build:'zplug --self-manage'
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "zsh-users/zsh-completions"
-
-zplug "mollifier/anyframe"
 
 zplug "tcnksm/docker-alias", use:zshrc
 
@@ -70,9 +70,42 @@ fi
 
 zplug load
 
-# anyframe
-bindkey "^r" anyframe-widget-put-history
-bindkey "^[" anyframe-widget-cdr
+# history
+_select-history() {
+  zle reset-prompt
+  BUFFER=$(history -n -r 1 | fzf --reverse --height 70% --no-sort --query "$LBUFFER" --prompt="history> ")
+  CURSOR=$#BUFFER
+}
+zle -N _select-history
+bindkey '^r' _select-history
+
+# cdr
+_select_recent_dir() {
+  zle reset-prompt
+  local target=$(cdr -l | gawk '{print $2}' | fzf --reverse --height 70% --prompt="cdr> ")
+  if [[ ! -n $target ]]; then
+    return
+  fi
+  BUFFER="cd ${target}"
+  zle accept-line
+}
+zle -N _select_recent_dir
+bindkey "^[" _select_recent_dir
+
+# ghq で管理されているディレクトリに移動
+cmd_exists ghq
+if [[ $? == 0 ]]; then
+  _ghq_cd() {
+    local target=$(find "${GHQ_ROOT}" -maxdepth 3 -type d | sed "1d; s|${GHQ_ROOT}/||" | fzf --reverse --height 70%)
+    if [[ ! -n ${target} ]]; then
+      return
+    fi
+    BUFFER="cd ${GHQ_ROOT}/${target}"
+    zle accept-line
+  }
+  zle -N _ghq_cd
+  bindkey "^]" _ghq_cd
+fi
 
 # git-foresta
 gf() {
