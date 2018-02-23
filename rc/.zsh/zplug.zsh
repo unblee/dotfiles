@@ -82,7 +82,7 @@ bindkey '^r' _select-history
 # cdr
 _select_recent_dir() {
   zle reset-prompt
-  local target=$(cdr -l | gawk '{print $2}' | fzf --reverse --height 70% --prompt="cdr> ")
+  local target=$(cdr -l | gawk '{print $2}' | fzf --reverse --no-sort --height 70% --prompt="cdr> ")
   if [[ ! -n $target ]]; then
     return
   fi
@@ -96,6 +96,7 @@ bindkey "^[" _select_recent_dir
 cmd_exists ghq
 if [[ $? == 0 ]]; then
   _ghq_cd() {
+    zle reset-prompt
     local target=$(find "${GHQ_ROOT}" -maxdepth 3 -type d | sed "1d; s|${GHQ_ROOT}/||" | fzf --reverse --height 70%)
     if [[ ! -n ${target} ]]; then
       return
