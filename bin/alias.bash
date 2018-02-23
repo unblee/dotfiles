@@ -45,6 +45,7 @@ alias tmux="TERM=xterm tmux -2"
 
 # git
 alias ga="git add"
+alias gam="git commit --amend"
 alias gom="git commit -m"
 alias gs="git status --short --branch"
 alias gi="git diff"
