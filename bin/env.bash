@@ -108,5 +108,5 @@ export PATH=${ZPLUG_HOME}/bin:${PATH}
 
 # rust/cargo
 if [[ -e "${HOME}/.cargo" ]]; then
-  source "${HOME}/.cargo/env"
+  export PATH=${HOME}/.cargo/bin:${PATH}
 fi
