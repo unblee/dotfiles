@@ -173,6 +173,7 @@ call plug#begin(s:plugged_dir)
   endif
 
   " window resizer
+  " Ctrl + e
   Plug 'simeji/winresizer'
 
 call plug#end()
