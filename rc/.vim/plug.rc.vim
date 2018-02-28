@@ -45,6 +45,12 @@ call plug#begin(s:plugged_dir)
   " vim
   Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
+  " ruby
+  Plug 'uplus/deoplete-solargraph', { 'for': 'ruby' }
+
+  " completion by syntax
+  Plug 'Shougo/neco-syntax'
+
   " 現在のカーソル位置のコンテキストによって filetype を切り換える
   Plug 'Shougo/context_filetype.vim'
   Plug 'osyo-manga/vim-precious'
