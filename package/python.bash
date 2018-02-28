@@ -9,5 +9,6 @@ pip3 install --upgrade --user mypy
 pip3 install --upgrade --user neovim
 pip3 install --upgrade --user pygments
 pip3 install --upgrade --user rope
+pip3 install --upgrade --user solargraph-utils.py
 pip3 install --upgrade --user yamllint
 pip3 install --upgrade --user yapf
