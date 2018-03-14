@@ -47,6 +47,9 @@ reload_rc() {
 }
 
 venv-init() {
+  if [[ ! -d .git/ ]]; then
+    git init
+  fi
   git rev-parse --is-inside-work-tree 1> /dev/null
   [ $? != 0 ] && return 1
 
