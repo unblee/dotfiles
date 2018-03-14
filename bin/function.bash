@@ -79,6 +79,23 @@ EOF
   echo 'deactivate' > "${TD}/.autoenv_leave.zsh"
 }
 
+pipenv-init() {
+  if [[ ! -d .git/ ]]; then
+    git init
+  fi
+  git rev-parse --is-inside-work-tree 1> /dev/null
+  [ $? != 0 ] && return 1
+
+  local TD=$(git rev-parse --show-toplevel)
+
+  pipenv --venv > /dev/null 2>&1
+  if [ $? != 0 ]; then
+    pipenv install --dev yapf flake8
+  fi
+
+  pipenv shell
+}
+
 cmd_exists minikube
 if [[ $? == 0 ]]; then
   minikube-start-with-docker-env() {

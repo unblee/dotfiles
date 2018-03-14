@@ -6,9 +6,6 @@ export XDG_CONFIG_HOME=${HOME}/.config
 # /usr/local/bin が PATH に無いとき追加
 [[ -d /usr/local/bin ]] && [[ $PATH =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
 
-# $HOME/.local/bin が PATH に無いとき追加
-[[ -d $HOME/.local/bin ]] && [[ $PATH =~ $HOME/.local/bin ]] || export PATH=$HOME/.local/bin:$PATH
-
 # dotfiles path
 export DOTFILES=$HOME/dotfiles
 
@@ -75,6 +72,7 @@ export LSCOLORS=ExFxCxdxBxegedabagacad
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 # ユーザがインストールするバイナリの置き場所
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/local/bin:$PATH
 
 # ruby
@@ -113,3 +111,6 @@ export PATH=${ZPLUG_HOME}/bin:${PATH}
 if [[ -e "${HOME}/.cargo" ]]; then
   export PATH=${HOME}/.cargo/bin:${PATH}
 fi
+
+# pipenv
+export PIPENV_SHELL_FANCY=1

@@ -29,7 +29,11 @@ bg_black=${bg[black]}
 # venv 環境か表示
 _is_venv() {
   if [ -n "${VIRTUAL_ENV}" ]; then
-    echo -n "%{$bg_yellow%}%{$fg_white%} venv %{$reset_color%}%{$reset_color%}"
+    local s="venv"
+    if [ -n "${PIPENV_ACTIVE}" ]; then
+      s="pipenv"
+    fi
+    echo -n "%{$bg_yellow%}%{$fg_white%} ${s} %{$reset_color%}%{$reset_color%}"
   fi
 }
 
