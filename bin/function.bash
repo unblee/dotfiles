@@ -46,7 +46,7 @@ reload_rc() {
   fi
 }
 
-function init-venv() {
+venv-init() {
   git rev-parse --is-inside-work-tree 1> /dev/null
   [ $? != 0 ] && return 1
 
@@ -59,7 +59,7 @@ function init-venv() {
   local activate_cmd="$(git rev-parse --show-toplevel)/venv/bin/activate"
   source "${activate_cmd}"
 
-  pip install neovim jedi yapf mypy pygments
+  pip install yapf
 
   local _prompt=$(
   echo ${PROMPT} | sed 's/(venv)//'
