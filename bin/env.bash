@@ -6,6 +6,9 @@ export XDG_CONFIG_HOME=${HOME}/.config
 # /usr/local/bin が PATH に無いとき追加
 [[ -d /usr/local/bin ]] && [[ $PATH =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
 
+# $HOME/.local/bin が PATH に無いとき追加
+[[ -d $HOME/.local/bin ]] && [[ $PATH =~ $HOME/.local/bin ]] || export PATH=$HOME/.local/bin:$PATH
+
 # dotfiles path
 export DOTFILES=$HOME/dotfiles
 
