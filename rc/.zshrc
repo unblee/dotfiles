@@ -273,6 +273,10 @@ if [[ $? == 0 ]]; then
   fi
 fi
 
+# pipenv completion
+cmd_exists pipenv
+[[ $? == 0 ]] && eval "$(pipenv --completion)"
+
 #
 # local settings
 #

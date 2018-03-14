@@ -7,6 +7,7 @@ pip2 install --upgrade --user neovim
 pip3 install --upgrade --user jedi
 pip3 install --upgrade --user mypy
 pip3 install --upgrade --user neovim
+pip3 install --upgrade --user pipenv
 pip3 install --upgrade --user pygments
 pip3 install --upgrade --user rope
 pip3 install --upgrade --user solargraph-utils.py
