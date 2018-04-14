@@ -28,8 +28,6 @@ alias vi=vim
 
 # fzf
 if type files > /dev/null 2>&1 && type fzf > /dev/null 2>&1; then
-  alias vip='F=`files|fzf --reverse --height 70%`;[ -n "$F" ]&&vim "$F"||:'
-  alias cip='TD=`git rev-parse --show-toplevel 2> /dev/null`;cd $TD/`files -d $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`'
   alias gap="git ls-files --modified | fzf --reverse --multi | xargs git add && git status --short --branch"
 fi
 
