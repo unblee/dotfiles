@@ -114,3 +114,6 @@ fi
 
 # pipenv
 export PIPENV_SHELL_FANCY=1
+
+# composer
+export PATH="${HOME}/.config/composer/vendor/bin:${PATH}"
