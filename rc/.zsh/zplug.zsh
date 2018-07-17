@@ -59,6 +59,8 @@ zplug "alecthomas/gometalinter", \
   as:command, \
   at:v2.0.3
 
+zplug "paulirish/git-open", as:plugin
+
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
