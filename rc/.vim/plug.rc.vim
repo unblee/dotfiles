@@ -34,6 +34,12 @@ call plug#begin(s:plugged_dir)
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 
+  " Language Server Protocol
+  Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+
   " golang
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
   Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
