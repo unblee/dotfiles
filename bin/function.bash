@@ -116,3 +116,17 @@ if cmd_exists fzf; then
     cd $TD/`files -d $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`
   }
 fi
+
+gout() {
+  if [[ "$1" == "" ]]; then
+    echo "Please specify branch name"
+    return
+  fi
+  local branch_name="$1"
+  git branch | grep -q "$branch_name"
+  if [[ $? != 0 ]]; then
+    # 指定したブランチが存在していない場合ブランチを作成
+    git branch "$branch_name"
+  fi
+  git checkout "$branch_name"
+}
