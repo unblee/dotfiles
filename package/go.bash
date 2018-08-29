@@ -21,7 +21,6 @@ go get -u -v github.com/mvdan/unparam
 go get -u -v github.com/newhook/go-symbols
 go get -u -v github.com/mdempsky/gocode
 go get -u -v github.com/posener/complete/gocomplete
-go get -u -v github.com/pwaller/goimports-update-ignore
 go get -u -v github.com/ramya-rao-a/go-outline
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/spf13/cobra/cobra
@@ -33,3 +32,14 @@ go get -u -v golang.org/x/tools/cmd/guru
 go get -u -v golang.org/x/tools/cmd/oracle
 go get -u -v golang.org/x/tools/cmd/stringer
 go get -u -v sourcegraph.com/sqs/goreturns
+
+# goimports
+go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v github.com/pwaller/goimports-update-ignore
+go get -u -v github.com/monochromegane/dragon-imports/cmd/dragon-imports
+echo "start goimports-update-ignore..."
+goimports-update-ignore -max-depth 5
+echo "finished goimports-update-ignore"
+echo "start dragon-imports..."
+dragon-imports
+echo "finished dragon-imports"
