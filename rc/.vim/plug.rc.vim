@@ -51,9 +51,6 @@ call plug#begin(s:plugged_dir)
   " vim
   Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
-  " ruby
-  Plug 'uplus/deoplete-solargraph', { 'for': 'ruby' }
-
   " completion by syntax
   Plug 'Shougo/neco-syntax'
 
