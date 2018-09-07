@@ -9,3 +9,11 @@ let g:ale_linters = {
 let g:ale_go_gometalinter_options = '--vendor --fast --enable=deadcode --enable=staticcheck --enable=gosimple --enable=unused'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" formatter
+let g:ale_fixers = {
+      \   'rust': [
+      \       'rustfmt',
+      \   ],
+      \}
+let g:ale_fix_on_save = 1
