@@ -41,6 +41,10 @@ cmd_exists aws_zsh_completer.sh
 cmd_exists rustup
 [[ $? == 0 ]] && eval rustup completions zsh > ${COMPLETIONS_DIR}/_rustup
 
+# pyenv
+cmd_exists pyenv
+[[ $? == 0 ]] && eval "$(pyenv init -)"
+
 #
 # settings for fpath
 # NOTE: set fpath before compinit

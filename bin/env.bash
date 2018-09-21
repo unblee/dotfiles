@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export DOTFILES=${HOME}/dotfiles
+
+source ${DOTFILES}/bin/function.bash
+
 # Support XDG Base Directory
 export XDG_CONFIG_HOME=${HOME}/.config
 
@@ -7,7 +11,6 @@ export XDG_CONFIG_HOME=${HOME}/.config
 [[ -d /usr/local/bin ]] && [[ $PATH =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
 
 # dotfiles path
-export DOTFILES=$HOME/dotfiles
 
 # 言語設定
 export LANG=C
@@ -117,3 +120,7 @@ export PIPENV_SHELL_FANCY=1
 
 # composer
 export PATH="${HOME}/.config/composer/vendor/bin:${PATH}"
+
+# pyenv
+cmd_exists pyenv
+[[ $? == 0 ]] && export PYENV_ROOT="$(pyenv root)"
