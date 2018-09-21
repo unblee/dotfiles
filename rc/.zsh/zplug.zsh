@@ -61,6 +61,11 @@ zplug "alecthomas/gometalinter", \
 
 zplug "paulirish/git-open", as:plugin
 
+zplug "unblee/chksum", \
+  from:gh-r, \
+  rename-to:chksum${zplug_file_suffix}, \
+  as:command
+
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
