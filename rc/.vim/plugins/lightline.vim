@@ -10,8 +10,8 @@ let g:lightline.active.right = [
       \   [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]
       \ ]
 
-let g:lightline.separator = { 'left': ' ', 'right': ' ' }
-let g:lightline.subseparator = { 'left': '', 'right': '  ' }
+" let g:lightline.separator = { 'left': ' ', 'right': ' ' }
+" let g:lightline.subseparator = { 'left': '', 'right': '  ' }
 
 let g:lightline.component_function = {
       \   'filename': 'LightlineFilename',
