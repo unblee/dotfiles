@@ -33,9 +33,9 @@ cmd_exists helm
 cmd_exists kops
 [[ $? == 0 ]] && eval kops completion zsh > ${COMPLETIONS_DIR}/_kops
 
-# aws-cli completion
-cmd_exists aws_zsh_completer.sh
-[[ $? == 0 ]] && source aws_zsh_completer.sh
+# # aws-cli completion
+# cmd_exists aws_zsh_completer.sh
+# [[ $? == 0 ]] && source aws_zsh_completer.sh
 
 # rustup completion
 cmd_exists rustup
@@ -44,6 +44,14 @@ cmd_exists rustup
 # pyenv
 cmd_exists pyenv
 [[ $? == 0 ]] && eval "$(pyenv init -)"
+
+# heptio/ark
+cmd_exists ark
+[[ $? == 0 ]] && ark completion zsh > ${COMPLETIONS_DIR}/_ark
+
+# minikube
+cmd_exists minikube
+[[ $? == 0 ]] && minikube completion zsh > ${COMPLETIONS_DIR}/_minikube
 
 #
 # settings for fpath
