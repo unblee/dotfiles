@@ -25,14 +25,22 @@ call plug#begin(s:plugged_dir)
   " status line
   Plug 'itchyny/lightline.vim'
 
-  " completion framework
   if has('nvim')
+    " completion framework
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " filer
+    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
   else
+    " completion framework
     Plug 'Shougo/deoplete.nvim'
+    " filer
+    Plug 'Shougo/defx.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
+
+  " filer icon
+  Plug 'kristijanhusak/defx-icons'
 
   " Language Server Protocol
   Plug 'autozimu/LanguageClient-neovim', {
@@ -165,9 +173,6 @@ call plug#begin(s:plugged_dir)
 
   " sudo save
   Plug 'lambdalisue/suda.vim'
-
-  " filer
-  Plug 'cocopon/vaffle.vim'
 
   " fuzzy finder
   if executable('fzf')
