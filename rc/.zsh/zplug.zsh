@@ -66,6 +66,8 @@ zplug "unblee/chksum", \
   rename-to:chksum${zplug_file_suffix}, \
   as:command
 
+zplug "lukechilds/zsh-nvm"
+
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
