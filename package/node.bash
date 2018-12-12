@@ -7,14 +7,16 @@ else
   npm_cmd="npm install --global"
 fi
 
-$npm_cmd eslint
-$npm_cmd eslint_d
-$npm_cmd typescript
-$npm_cmd tern
-$npm_cmd fixpack
-$npm_cmd prettier
-$npm_cmd stylefmt
-$npm_cmd prettier-eslint
-$npm_cmd prettier-eslint-cli
-$npm_cmd editorconfig-cli
-$npm_cmd now
+$npm_cmd \
+  \ eslint
+  \ eslint_d
+  \ typescript
+  \ tern
+  \ fixpack
+  \ prettier
+  \ stylefmt
+  \ prettier-eslint
+  \ prettier-eslint-cli
+  \ editorconfig-cli
+  \ now
+  \ vue-language-server
