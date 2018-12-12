@@ -4,12 +4,6 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" insert mode でも hjkl で移動
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-
 " w!! でスーパユーザ sudo 保存
 cnoremap w!! w !sudo tee > /dev/null %
 
