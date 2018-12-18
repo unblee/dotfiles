@@ -16,23 +16,6 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "zsh-users/zsh-completions"
 
-zplug "tcnksm/docker-alias", use:zshrc
-
-zplug "peco/peco", \
-  from:gh-r, \
-  rename-to:peco${zplug_file_suffix}, \
-  as:command
-
-zplug "Masterminds/glide", \
-  from:gh-r, \
-  rename-to:glide${zplug_file_suffix}, \
-  as:command
-
-zplug "unblee/t", \
-  from:gh-r, \
-  rename-to:t${zplug_file_suffix}, \
-  as:command
-
 zplug "b4b4r07/http_code", \
   as:command, \
   use:bin/http_code
