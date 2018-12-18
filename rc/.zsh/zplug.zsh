@@ -14,42 +14,48 @@ zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-completions", lazy:true
 
 zplug "b4b4r07/http_code", \
   as:command, \
-  use:bin/http_code
+  use:bin/http_code, \
+  lazy:true
 
 zplug "simeji/jid", \
   from:gh-r, \
   rename-to:jid${zplug_file_suffix}, \
-  as:command
+  as:command, \
+  lazy:true
 
-zplug "Tarrasch/zsh-autoenv"
+zplug "Tarrasch/zsh-autoenv", lazy:true
 
 zplug "takaaki-kasai/git-foresta", \
   as:command, \
-  use:git-foresta
+  use:git-foresta, \
+  lazy:true
 
 zplug "junegunn/fzf-bin", \
   from:gh-r, \
   rename-to:fzf${zplug_file_suffix}, \
-  as:command
+  as:command, \
+  lazy:true
 
 zplug "alecthomas/gometalinter", \
   from:gh-r, \
   rename-to:gometalinter${zplug_file_suffix}, \
   as:command, \
-  at:v2.0.3
+  at:v2.0.3, \
+  lazy:true
 
-zplug "paulirish/git-open", as:plugin
+zplug "paulirish/git-open", as:plugin, lazy:true
 
 zplug "unblee/chksum", \
   from:gh-r, \
   rename-to:chksum${zplug_file_suffix}, \
-  as:command
+  as:command, \
+  lazy:true
 
-zplug "lukechilds/zsh-nvm"
+zplug "lukechilds/zsh-nvm", lazy:true
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
