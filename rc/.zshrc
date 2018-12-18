@@ -27,19 +27,15 @@ cmd_exists kubectl
 
 # helm(k8s) completion
 cmd_exists helm
-[[ $? == 0 ]] && eval helm completion zsh > ${COMPLETIONS_DIR}/_helm
+[[ $? == 0 ]] && helm completion zsh > ${COMPLETIONS_DIR}/_helm
 
 # kops(k8s) completion
 cmd_exists kops
-[[ $? == 0 ]] && eval kops completion zsh > ${COMPLETIONS_DIR}/_kops
-
-# # aws-cli completion
-# cmd_exists aws_zsh_completer.sh
-# [[ $? == 0 ]] && source aws_zsh_completer.sh
+[[ $? == 0 ]] && kops completion zsh > ${COMPLETIONS_DIR}/_kops
 
 # rustup completion
 cmd_exists rustup
-[[ $? == 0 ]] && eval rustup completions zsh > ${COMPLETIONS_DIR}/_rustup
+[[ $? == 0 ]] && rustup completions zsh > ${COMPLETIONS_DIR}/_rustup
 
 # pyenv
 cmd_exists pyenv
