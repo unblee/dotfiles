@@ -7,6 +7,5 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_rootMarkers = {
       \ 'go': ['.git', 'go.mod'],
       \ }
-}
 
 nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
