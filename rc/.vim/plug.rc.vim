@@ -73,8 +73,6 @@ call plug#begin(s:plugged_dir)
   Plug 'ctrlpvim/ctrlp.vim'
   " ctrl matcher
   Plug 'FelikZ/ctrlp-py-matcher'
-  " ctrlp command palette
-  Plug 'fisadev/vim-ctrlp-cmdpalette'
 
   " 移動支援
   Plug 'easymotion/vim-easymotion'
@@ -126,9 +124,6 @@ call plug#begin(s:plugged_dir)
 
   " git sign
   Plug 'airblade/vim-gitgutter'
-
-  " dockerfile
-  Plug 'moby/moby', { 'rtp': '/contrib/syntax/vim/' }
 
   " 背景透過
   Plug 'miyakogi/seiya.vim'
