@@ -8,15 +8,15 @@ else
 fi
 
 $npm_cmd \
-  \ eslint
-  \ eslint_d
-  \ typescript
-  \ tern
-  \ fixpack
-  \ prettier
-  \ stylefmt
-  \ prettier-eslint
-  \ prettier-eslint-cli
-  \ editorconfig-cli
-  \ now
-  \ vue-language-server
+  eslint \
+  eslint_d \
+  typescript \
+  tern \
+  fixpack \
+  prettier \
+  stylefmt \
+  prettier-eslint \
+  prettier-eslint-cli \
+  editorconfig-cli \
+  now \
+  vue-language-server
