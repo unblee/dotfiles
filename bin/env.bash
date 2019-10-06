@@ -107,8 +107,8 @@ if [[ -e /usr/share/git/diff-highlight ]]; then
 fi
 
 # zplug
-export ZPLUG_HOME=~/.zplug
-export PATH=${ZPLUG_HOME}/bin:${PATH}
+# export ZPLUG_HOME=~/.zplug
+# export PATH=${ZPLUG_HOME}/bin:${PATH}
 
 # rust/cargo
 if [[ -e "${HOME}/.cargo" ]]; then

@@ -7,3 +7,5 @@ GTAGS
 .autoenv_leave.zsh
 .vscode/
 debug
+.DS_Store
+.terraform/

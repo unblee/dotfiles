@@ -106,7 +106,7 @@ if [[ $? == 0 ]]; then
 fi
 
 
-if cmd_exists fzf; then
+# if cmd_exists fzf; then
   vip() {
     local F=`files|fzf --reverse --height 70%`
     [ -n "$F" ] && vim "$F" || :
@@ -115,7 +115,7 @@ if cmd_exists fzf; then
     local TD=`git rev-parse --show-toplevel 2> /dev/null`
     cd $TD/`files -d $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`
   }
-fi
+# fi
 
 gout() {
   if [[ "$1" == "" ]]; then

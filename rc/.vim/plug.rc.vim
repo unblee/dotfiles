@@ -179,6 +179,7 @@ call plug#begin(s:plugged_dir)
   " Ctrl + e
   Plug 'simeji/winresizer'
 
+  Plug 'liuchengxu/vista.vim'
 call plug#end()
 " }}
 

@@ -190,7 +190,7 @@ setopt interactivecomments
 # zplug
 #
 
-source ${DOTFILES}/rc/.zsh/zplug.zsh
+# source ${DOTFILES}/rc/.zsh/zplug.zsh
 
 
 #
@@ -217,10 +217,8 @@ fi
 stty stop undef
 
 # mosh 補完
-compdef mosh=ssh
+# compdef mosh=ssh
 
-# git alias
-compdef g='git'
 
 # anyenv
 if [ -e ${HOME}/.anyenv ]; then
@@ -293,3 +291,74 @@ if [[ $? == 0 ]]; then
   autoload -U +X bashcompinit && bashcompinit
   complete -o nospace -C ${GOPATH}/bin/gocomplete go
 fi
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# added by travis gem
+[ -f /Users/unblee/.travis/travis.sh ] && source /Users/unblee/.travis/travis.sh
+
+### Added by Zplugin's installer
+source '/Users/unblee/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
+
+zplugin light zdharma/fast-syntax-highlighting
+zplugin light zsh-users/zsh-completions
+zplugin light Tarrasch/zsh-autoenv
+zplugin light paulirish/git-open
+zplugin light lukechilds/zsh-nvm
+zplugin ice wait"!0" as"program" pick"bin/http_code"; zplugin load b4b4r07/http_code
+zplugin ice wait"!0" from"gh-r" as"program"; zplugin load simeji/jid
+zplugin ice wait"!0" as"program" pick"git-foresta"; zplugin load takaaki-kasai/git-foresta
+zplugin ice wait"!0" from"gh-r" as"program" mv"fzf-* -> fzf"; zplugin load junegunn/fzf-bin
+zplugin ice wait"!0" from"gh-r" as"program" mv"chksum_v0.2.0_darwin_amd64/chksum -> chksum"; zplugin load unblee/chksum
+
+# history
+_select-history() {
+  BUFFER=$(history -n -r 1 | fzf --reverse --height 70% --no-sort --query "$LBUFFER" --prompt="history> ")
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N _select-history
+bindkey '^r' _select-history
+
+# cdr
+_select_recent_dir() {
+  local target=$(cdr -l | gawk '{print $2}' | fzf --reverse --no-sort --height 70% --prompt="cdr> ")
+  if [[ ! -n $target ]]; then
+    zle reset-prompt
+    return
+  fi
+  BUFFER="cd ${target}"
+  zle accept-line
+}
+zle -N _select_recent_dir
+bindkey "^[" _select_recent_dir
+
+# ghq で管理されているディレクトリに移動
+cmd_exists ghq
+if [[ $? == 0 ]]; then
+  _ghq_cd() {
+    local target=$(find "${GHQ_ROOT}" -maxdepth 3 -type d | sed "1d; s|${GHQ_ROOT}/||" | fzf --reverse --height 70%)
+    if [[ ! -n ${target} ]]; then
+      zle reset-prompt
+      return
+    fi
+    BUFFER="cd ${GHQ_ROOT}/${target}"
+    zle accept-line
+  }
+  zle -N _ghq_cd
+  bindkey "^]" _ghq_cd
+fi
+
+# git-foresta
+gf() {
+  git-foresta --all --style=10 --graph-margin-right=2 | less -RSX
+}
+
+# git alias
+compdef g='git'
+
+export PATH=$HOME/local/google-cloud-sdk/bin:$PATH
+source $HOME/local/google-cloud-sdk/completion.zsh.inc

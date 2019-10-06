@@ -40,14 +40,7 @@ zplug "junegunn/fzf-bin", \
   as:command, \
   lazy:true
 
-zplug "alecthomas/gometalinter", \
-  from:gh-r, \
-  rename-to:gometalinter${zplug_file_suffix}, \
-  as:command, \
-  at:v2.0.3, \
-  lazy:true
-
-zplug "paulirish/git-open", as:plugin, lazy:true
+zplug "paulirish/git-open", as:plugin
 
 zplug "unblee/chksum", \
   from:gh-r, \
@@ -56,6 +49,8 @@ zplug "unblee/chksum", \
   lazy:true
 
 zplug "lukechilds/zsh-nvm", lazy:true
+
+# zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -70,18 +65,18 @@ zplug load
 
 # history
 _select-history() {
-  zle reset-prompt
   BUFFER=$(history -n -r 1 | fzf --reverse --height 70% --no-sort --query "$LBUFFER" --prompt="history> ")
   CURSOR=$#BUFFER
+  zle reset-prompt
 }
 zle -N _select-history
 bindkey '^r' _select-history
 
 # cdr
 _select_recent_dir() {
-  zle reset-prompt
   local target=$(cdr -l | gawk '{print $2}' | fzf --reverse --no-sort --height 70% --prompt="cdr> ")
   if [[ ! -n $target ]]; then
+    zle reset-prompt
     return
   fi
   BUFFER="cd ${target}"
@@ -94,9 +89,9 @@ bindkey "^[" _select_recent_dir
 cmd_exists ghq
 if [[ $? == 0 ]]; then
   _ghq_cd() {
-    zle reset-prompt
     local target=$(find "${GHQ_ROOT}" -maxdepth 3 -type d | sed "1d; s|${GHQ_ROOT}/||" | fzf --reverse --height 70%)
     if [[ ! -n ${target} ]]; then
+      zle reset-prompt
       return
     fi
     BUFFER="cd ${GHQ_ROOT}/${target}"
