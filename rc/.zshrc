@@ -10,7 +10,7 @@
 # function
 #
 
-source ${DOTFILES}/bin/function.bash
+source ${DOTFILES}/lib/utils
 
 #
 # completion
@@ -22,31 +22,31 @@ source ${DOTFILES}/bin/function.bash
 COMPLETIONS_DIR=${DOTFILES}/rc/.zsh/completions
 
 # kubectl(k8s) completion
-cmd_exists kubectl
+_has kubectl
 [[ $? == 0 ]] && kubectl completion zsh > ${COMPLETIONS_DIR}/_kubectl
 
 # helm(k8s) completion
-cmd_exists helm
+_has helm
 [[ $? == 0 ]] && helm completion zsh > ${COMPLETIONS_DIR}/_helm
 
 # kops(k8s) completion
-cmd_exists kops
+_has kops
 [[ $? == 0 ]] && kops completion zsh > ${COMPLETIONS_DIR}/_kops
 
 # rustup completion
-cmd_exists rustup
+_has rustup
 [[ $? == 0 ]] && rustup completions zsh > ${COMPLETIONS_DIR}/_rustup
 
 # pyenv
-cmd_exists pyenv
+_has pyenv
 [[ $? == 0 ]] && eval "$(pyenv init -)"
 
 # heptio/ark
-cmd_exists ark
+_has ark
 [[ $? == 0 ]] && ark completion zsh > ${COMPLETIONS_DIR}/_ark
 
 # minikube
-cmd_exists minikube
+_has minikube
 [[ $? == 0 ]] && minikube completion zsh > ${COMPLETIONS_DIR}/_minikube
 
 #
@@ -197,7 +197,7 @@ setopt interactivecomments
 # alias
 #
 
-source ${DOTFILES}/bin/alias.bash
+source ${DOTFILES}/lib/alias
 
 # cd 履歴の管理
 # http://blog.n-z.jp/blog/2013-11-12-zsh-cdr.html
@@ -248,7 +248,7 @@ fi
 #
 
 # http://qiita.com/ssh0/items/a9956a74bff8254a606a
-cmd_exists tmux
+_has tmux
 if [[ $? == 0 ]]; then
   if [[ -z $TMUX ]]; then
     # already exists sessions
@@ -277,7 +277,7 @@ if [[ $? == 0 ]]; then
 fi
 
 # pipenv completion
-cmd_exists pipenv
+_has pipenv
 [[ $? == 0 ]] && eval "$(pipenv --completion)"
 
 #
@@ -286,7 +286,7 @@ cmd_exists pipenv
 
 [[ -e ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local
 
-cmd_exists gocomplete
+_has gocomplete
 if [[ $? == 0 ]]; then
   autoload -U +X bashcompinit && bashcompinit
   complete -o nospace -C ${GOPATH}/bin/gocomplete go
@@ -337,7 +337,7 @@ zle -N _select_recent_dir
 bindkey "^[" _select_recent_dir
 
 # ghq で管理されているディレクトリに移動
-cmd_exists ghq
+_has ghq
 if [[ $? == 0 ]]; then
   _ghq_cd() {
     local target=$(find "${GHQ_ROOT}" -maxdepth 3 -type d | sed "1d; s|${GHQ_ROOT}/||" | fzf --reverse --height 70%)

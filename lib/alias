@@ -1,4 +1,7 @@
-#!/bin/bash
+# vi: ft=sh
+
+_pwd=$(dirname $0)
+source ${_pwd}/env
 
 # find
 [[ "${PLATFORM}" == "windows" ]] && alias find="/usr/bin/find.exe"
@@ -20,14 +23,8 @@ esac
 # clear
 alias cls="clear"
 
-# vim
-[[ "${PLATFORM}" == "windows" ]] && alias vim=gvim
-type nvim > /dev/null 2>&1
-[ $? -eq 0 ] && alias vim=nvim
-alias vi=vim
-
 # fzf
-if type files > /dev/null 2>&1 && type fzf > /dev/null 2>&1; then
+if _has files && _has fzf; then
   alias gap="git ls-files --modified | fzf --reverse --multi | xargs git add && git status --short --branch"
 fi
 
@@ -54,7 +51,7 @@ alias gpush="git push"
 alias g=git
 
 # ripgrep
-if type rg > /dev/null 2>&1; then
+if _has rg; then
   alias rg="rg --hidden --smart-case --glob='!.git/'"
 fi
 

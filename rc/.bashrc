@@ -2,9 +2,9 @@
 # ~/.bashrc
 #
 
-source ${HOME}/dotfiles/bin/env.bash
-source ${HOME}/dotfiles/bin/alias.bash
-source ${HOME}/dotfiles/bin/function.bash
+source ${HOME}/dotfiles/lib/env
+source ${HOME}/dotfiles/lib/utils
+source ${HOME}/dotfiles/lib/alias
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
