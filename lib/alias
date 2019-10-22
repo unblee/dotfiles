@@ -6,19 +6,19 @@ source ${_pwd}/env
 # find
 [[ "${PLATFORM}" == "windows" ]] && alias find="/usr/bin/find.exe"
 
-# ls
-case "${PLATFORM}" in
-  darwin)
-    alias ls="ls -G"
-    alias ll="ls -lG"
-    alias la="ls -laG"
-    ;;
-  *)
-    alias ls='ls --color'
-    alias ll='ls -l --color'
-    alias la='ls -la --color'
-    ;;
-esac
+# # ls
+# case "${PLATFORM}" in
+#   darwin)
+#     alias ls="ls -G"
+#     alias ll="ls -lG"
+#     alias la="ls -laG"
+#     ;;
+#   *)
+#     alias ls='ls --color'
+#     alias ll='ls -l --color'
+#     alias la='ls -la --color'
+#     ;;
+# esac
 
 # clear
 alias cls="clear"

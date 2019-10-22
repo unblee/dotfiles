@@ -180,6 +180,12 @@ call plug#begin(s:plugged_dir)
   Plug 'simeji/winresizer'
 
   Plug 'liuchengxu/vista.vim'
+
+  " terraform
+  Plug 'hashivim/vim-terraform'
+
+  " direnv
+  Plug 'direnv/direnv.vim'
 call plug#end()
 " }}
 
