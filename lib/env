@@ -58,7 +58,7 @@ export PATH=$HOME/local/bin:$PATH
 
 # ruby
 if _has ruby; then
-  ruby_version=$(ruby -v | cut -f 2 -d " " | sed -r "s/([0-9]\.[0-9])\..+/\1.0/")
+  ruby_version=$(ruby -v | cut -f 2 -d " " | gsed -r "s/([0-9]\.[0-9])\..+/\1.0/")
   ruby_bin_dir=${HOME}/.gem/ruby/${ruby_version}/bin
   [[ -d ${ruby_bin_dir} ]] && export PATH=${ruby_bin_dir}:${PATH}
 fi

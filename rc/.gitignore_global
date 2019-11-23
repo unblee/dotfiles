@@ -9,3 +9,5 @@ GTAGS
 debug
 .DS_Store
 .terraform/
+.idea/
+.realize.yaml

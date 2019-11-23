@@ -29,7 +29,7 @@ use_ruby() {
       ;;
   esac
 
-  local version0="$(echo $version | sed -r "s/(^.*\.).*/\10/")"
+  local version0="$(echo $version | gsed -r "s/(^.*\.).*/\10/")"
   if [ "$version0" = "1.8.0" ]; then
     version0="1.8"
   fi
@@ -54,7 +54,7 @@ use_ruby() {
 use_go() {
   case "$#" in
     0)
-      local version="$(go version | sed -r "s/^go[^1-9]+(.+) .+/\1/")"
+      local version="$(go version | gsed -r "s/^go[^1-9]+(.+) .+/\1/")"
       local default=1
       ;;
     1)

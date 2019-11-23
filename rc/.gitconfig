@@ -2,7 +2,7 @@
   name = unblee
   email = unblee@users.noreply.github.com
 [color]
-  ui = auto
+	ui = true
   diff = auto
   status = auto
   branch = auto
@@ -13,6 +13,7 @@
   preloadindex = true
   fscache = true
   filemode = true
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
   default = simple
 [help]
@@ -70,3 +71,18 @@
   what = show -w
 [commit]
   verbose = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	stripLeadingSymbols = false
+	changeHunkIndicators = true
