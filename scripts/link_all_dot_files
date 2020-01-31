@@ -23,6 +23,7 @@ backup_and_link() {
     DOT_ENTITY="$DOT_ENTITY_ROOT/$F"
     [[ -e "$DOT_LINK" ]] && [[ "$(readlink $DOT_LINK)" == "$DOT_ENTITY" ]] && continue
     echo "==> link from '$DOT_LINK' to '$DOT_ENTITY'"
+    rm -f "$DOT_LINK"
     ln -fs "$DOT_ENTITY" "$DOT_LINK"
   done
 }
