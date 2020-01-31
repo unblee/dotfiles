@@ -5,5 +5,5 @@
 ## Intallation
 
 ```console
-$ ./bin/init.bash
+bash -c "$(curl -fsSL https://git.io/unblee-dotfiles-setup)"
 ```
