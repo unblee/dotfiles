@@ -1,0 +1,47 @@
+#!/bin/bash
+
+set -e
+
+backup_and_link() {
+  if [[ ! -d "$BACKUP_DIR" ]]; then
+    echo "==> create the backup directory"
+    mkdir "$BACKUP_DIR"
+  fi
+
+  ls -A "$DOT_ENTITY_ROOT" | while read -r F; do
+    [[ "$F" == "$EXCLUDE_NAME" ]] && continue
+
+    BACKUP_SUFFIX=$(date +%Y%m%d%H%M%S)
+    DOT_BACKUP="$BACKUP_DIR/$F-$BACKUP_SUFFIX"
+    DOT_OLD="$DOT_OLD_ROOT/$F"
+    if [[ -e "$DOT_OLD" ]] && [[ ! -L "$DOT_OLD" ]]; then
+      echo "==> backup from '$DOT_OLD' to '$DOT_BACKUP'"
+      mv "$DOT_OLD" "$DOT_BACKUP"
+    fi
+
+    DOT_LINK="$DOT_LINK_ROOT/$F"
+    DOT_ENTITY="$DOT_ENTITY_ROOT/$F"
+    [[ -e "$DOT_LINK" ]] && [[ "$(readlink $DOT_LINK)" == "$DOT_ENTITY" ]] && continue
+    echo "==> link from '$DOT_LINK' to '$DOT_ENTITY'"
+    ln -fs "$DOT_ENTITY" "$DOT_LINK"
+  done
+}
+
+XDG_BASE_DIR_NAME=".config"
+XDG_BASE_DIR_ROOT="$HOME/$XDG_BASE_DIR_NAME"
+
+# HOME
+BACKUP_DIR="$HOME/old_dotfiles"
+EXCLUDE_NAME="$XDG_BASE_DIR_NAME"
+DOT_ENTITY_ROOT="$HOME/dotfiles/dot"
+DOT_OLD_ROOT="$HOME"
+DOT_LINK_ROOT="$HOME"
+backup_and_link
+
+# XDG Base Directory
+BACKUP_DIR="$BACKUP_DIR/$XDG_BASE_DIR_NAME"
+EXCLUDE_NAME=""
+DOT_ENTITY_ROOT="$DOT_ENTITY_ROOT/$XDG_BASE_DIR_NAME"
+DOT_OLD_ROOT="$XDG_BASE_DIR_ROOT"
+DOT_LINK_ROOT="$XDG_BASE_DIR_ROOT"
+backup_and_link

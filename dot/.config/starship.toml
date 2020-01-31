@@ -1,0 +1,31 @@
+scan_timeout = 10
+
+prompt_order = [
+  "directory",
+  "git_branch",
+  "git_state",
+  "kubernetes",
+  "line_break",
+  "time",
+  "character",
+]
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+style = ""
+
+[git_branch]
+style = "green"
+
+[kubernetes]
+style = "blue"
+disabled = false
+
+[time]
+disabled = false
+format = "%F %T JST"
+style = ""
+
+[character]
+symbol = "$"

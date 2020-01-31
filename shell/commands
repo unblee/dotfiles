@@ -1,0 +1,38 @@
+#!/bin/bash
+
+minikube-start-with-docker-env() {
+  minikube start
+  echo "Load 'minikube docker-env'"
+  eval $(minikube docker-env)
+}
+
+vip() {
+  local F=$(files|fzf --reverse --height 70%)
+  if [[ "$F" != "" ]]; then
+    vim "$F" || :
+  fi
+}
+
+cip() {
+  local TD=`git rev-parse --show-toplevel 2> /dev/null`
+  cd $TD/`files -d $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`
+}
+
+gout() {
+  if [[ "$1" == "" ]]; then
+    echo "Please specify branch name"
+    return
+  fi
+  local branch_name="$1"
+  git branch | grep -q "$branch_name"
+  if [[ $? != 0 ]]; then
+    # 指定したブランチが存在していない場合ブランチを作成
+    git branch "$branch_name"
+  fi
+  git checkout "$branch_name"
+}
+
+# git-foresta
+gf() {
+  git-foresta --all --style=10 --graph-margin-right=2 | less -RSX
+}

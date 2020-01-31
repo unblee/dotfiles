@@ -1,0 +1,4 @@
+#!/bin/bash
+
+_pwd=$(dirname $0)
+$_pwd/link_all_dot_files

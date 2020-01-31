@@ -1,0 +1,5 @@
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sr <Plug>(operator-surround-replace)
+nmap <silent>sdd <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
+nmap <silent>srr <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
