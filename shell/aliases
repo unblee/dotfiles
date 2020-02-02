@@ -55,3 +55,6 @@ fi
 # cd
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# vim
+alias vim=nvim
