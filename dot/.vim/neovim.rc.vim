@@ -1,4 +1,5 @@
 set inccommand=split
+set pumblend=20
 
 " python
 if IsWindows()
