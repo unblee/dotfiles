@@ -1,0 +1,13 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "rust"
+  ]
+  ,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", "Gopkg.toml", "main.go"],
+      "filetypes": ["go"]
+    }
+  }
+}

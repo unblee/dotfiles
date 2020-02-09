@@ -26,42 +26,22 @@ call plug#begin(s:plugged_dir)
   " status line
   Plug 'itchyny/lightline.vim'
 
-  if has('nvim')
-    " completion framework
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " filer
-    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
-  else
-    " completion framework
-    Plug 'Shougo/deoplete.nvim'
-    " filer
-    Plug 'Shougo/defx.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+  " LSP
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc-neco'
 
-  " filer icon
-  Plug 'kristijanhusak/defx-icons'
-
-  " Language Server Protocol
-  Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
+  " " Linter
+  Plug 'dense-analysis/ale'
+  Plug 'maximbaz/lightline-ale'
 
   " golang
-  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-  Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
+  Plug 'mattn/vim-goaddtags'
 
   " markdown
-  Plug 'fszymanski/deoplete-emoji', { 'for': 'markdown' }
   Plug 'rhysd/vim-gfm-syntax', { 'for': 'markdown' }
 
   " vim
   Plug 'Shougo/neco-vim', { 'for': 'vim' }
-
-  " completion by syntax
-  Plug 'Shougo/neco-syntax'
 
   " 現在のカーソル位置のコンテキストによって filetype を切り換える
   Plug 'Shougo/context_filetype.vim'
@@ -92,9 +72,6 @@ call plug#begin(s:plugged_dir)
 
   " コメントIN/OUT切り替え
   Plug 'tyru/caw.vim'
-
-  " 対応する括弧の自動入力
-  Plug 'cohama/lexima.vim'
 
   " テキストオブジェクト拡張
   Plug 'kana/vim-textobj-user'
@@ -127,11 +104,7 @@ call plug#begin(s:plugged_dir)
   Plug 'airblade/vim-gitgutter'
 
   " 背景透過
-  Plug 'miyakogi/seiya.vim'
-
-  " asynchronous linter
-  Plug 'w0rp/ale'
-  Plug 'maximbaz/lightline-ale'
+  " Plug 'miyakogi/seiya.vim'
 
   " ビジュアル選択した状態でIやAを入力した場合でも
   " 行頭や行末に文字列を挿入してくれるようになる
@@ -157,6 +130,7 @@ call plug#begin(s:plugged_dir)
 
   " J 結合拡張
   Plug 'osyo-manga/vim-jplus'
+  Plug 'AndrewRadev/splitjoin.vim'
 
   " カーソル下にある単語をハイライト
   Plug 't9md/vim-quickhl'
@@ -180,15 +154,23 @@ call plug#begin(s:plugged_dir)
   " Ctrl + e
   Plug 'simeji/winresizer'
 
-  Plug 'liuchengxu/vista.vim'
-
   " terraform
   Plug 'hashivim/vim-terraform'
 
   " direnv
   Plug 'direnv/direnv.vim'
+
+  " filer
+  Plug 'lambdalisue/fern.vim'
+
+  " git blame
+  Plug 'rhysd/git-messenger.vim'
 call plug#end()
+
+  " better '%'
+  Plug 'andymass/vim-matchup'
 " }}
+
 
 " apply colorscheme
 try
