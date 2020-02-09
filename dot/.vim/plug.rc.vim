@@ -18,9 +18,10 @@ autocmd VimEnter *
 
 " プラグイン一覧 {{
 call plug#begin(s:plugged_dir)
-
   " colorscheme
-  Plug 'joshdick/onedark.vim'
+  Plug 'cocopon/iceberg.vim'
+  Plug 'gkeep/iceberg-dark'
+  " Plug 'arcticicestudio/nord-vim'
 
   " status line
   Plug 'itchyny/lightline.vim'
@@ -189,10 +190,10 @@ call plug#begin(s:plugged_dir)
 call plug#end()
 " }}
 
-" colorsheme
-set background=dark
+" apply colorscheme
 try
-    colorscheme onedark
+  colorscheme iceberg
+  " colorscheme nord
 catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme desert
+  colorscheme desert
 endtry
