@@ -12,9 +12,9 @@ endif
 
 " インストールされていないプラグインを自動インストール
 autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
+      \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \|   PlugInstall --sync | q
+      \| endif
 
 " プラグイン一覧 {{
 call plug#begin(s:plugged_dir)
