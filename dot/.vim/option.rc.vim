@@ -137,3 +137,6 @@ set undodir=~/.cache/vimundofile
 
 " <Leader>キー(\)を ; に変更
 let mapleader = ';'
+
+" don't display the mode information in the statusline
+set noshowmode
