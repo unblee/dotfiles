@@ -27,6 +27,7 @@ set shiftwidth=2
 
 " 不可視文字を表示(e.g. tab,eol)
 set list
+set listchars=tab:→\ ,
 
 " カーソルが何行目の何文字目に置かれているかを表示
 set ruler
