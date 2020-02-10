@@ -162,6 +162,9 @@ call plug#begin(s:plugged_dir)
 
   " filer
   Plug 'lambdalisue/fern.vim'
+  Plug 'lambdalisue/fern-renderer-devicons.vim'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'lambdalisue/fern-mapping-project-top.vim'
 
   " git blame
   Plug 'rhysd/git-messenger.vim'
