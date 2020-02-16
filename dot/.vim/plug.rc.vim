@@ -172,6 +172,12 @@ call plug#end()
 
   " better '%'
   Plug 'andymass/vim-matchup'
+
+  " git branch name
+  Plug 'itchyny/vim-gitbranch'
+
+  " brackets
+  Plug 'jiangmiao/auto-pairs'
 " }}
 
 
