@@ -21,7 +21,7 @@ call plug#begin(s:plugged_dir)
   " colorscheme
   Plug 'cocopon/iceberg.vim'
   Plug 'gkeep/iceberg-dark'
-  " Plug 'arcticicestudio/nord-vim'
+  Plug 'joshdick/onedark.vim'
 
   " status line
   Plug 'itchyny/lightline.vim'
@@ -176,9 +176,12 @@ call plug#end()
 
 
 " apply colorscheme
+let g:onedark_color_overrides = {
+     \ "black": {"gui": "#161821", "cterm": "233", "cterm16": "0" },
+     \ }
 try
-  colorscheme iceberg
-  " colorscheme nord
+  " colorscheme iceberg
+  colorscheme onedark
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme desert
 endtry
