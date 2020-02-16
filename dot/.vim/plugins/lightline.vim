@@ -1,16 +1,34 @@
+" Use auocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+function! CocCurrentFunction()
+    return winwidth(0) > 70 ? get(b:, 'coc_current_function', '') : ''
+endfunction
+
 let g:lightline = {}
 
 let g:lightline.colorscheme = 'icebergDark'
+let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+let s:palette.inactive.middle = [ [ "#ABB2BF", "#161821", "145", "233" ] ]
+let s:palette.inactive.right = [ [ "#ABB2BF", "#161821", "145", "233" ] ]
+let s:palette.inactive.left = [ [ "#ABB2BF", "#161821", "145", "233" ] ]
+let s:palette.normal.middle = [ [ "#ABB2BF", "#161821", "145", "233" ] ]
+let s:palette.tabline.middle = [ [ "#ABB2BF", "#161821", "145", "233" ] ]
+
+let g:lightline.separator = { 'left': ' ', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
+
+let g:lightline.inactive = {}
+let g:lightline.inactive.left = []
+let g:lightline.inactive.right = []
 
 let g:lightline.active = {}
 let g:lightline.active.left = [
-     \   [ 'mode', 'paste' ], [ 'filename' ], [ 'ctrlpmark' ], [ 'linter_errors', 'linter_warnings', 'linter_ok' ]
+     \   [ 'mode' ], [ 'filename' ], [ 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'cocstatus', 'currentfunction' ], [ 'ctrlpmark' ]
      \ ]
 let g:lightline.active.right = [
-     \   [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]
+     \ [], [], [ 'fileformat', 'fileencoding', 'filetype' ]
      \ ]
-
-let g:lightline.separator = { 'left': ' ', 'right': ' ' }
 
 let g:lightline.component_function = {
      \   'filename': 'LightlineFilename',
@@ -19,6 +37,8 @@ let g:lightline.component_function = {
      \   'fileencoding': 'LightlineFileencoding',
      \   'mode': 'LightlineMode',
      \   'ctrlpmark': 'CtrlPMark',
+     \   'cocstatus': 'coc#status',
+     \   'currentfunction': 'CocCurrentFunction',
      \ }
 
 let g:lightline.component_expand = {
@@ -37,20 +57,25 @@ let g:lightline#ale#indicator_errors = '🚫'
 let g:lightline#ale#indicator_ok = '✅'
 
 function! LightlineModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  return &ft =~ 'help\|fern' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! LightlineReadonly()
-  return &ft !~? 'help' && &readonly ? "RO" : ''
+  return &ft !~? 'help\|fern' && &readonly ? "RO" : ''
 endfunction
 
 function! LightlineFilename()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-       \ fname =~ '__Mundo' ? '' :
+  let root = fnamemodify(get(b:, 'gitbranch_path'), ':h:h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  let fname = expand('%')
+  return winwidth(0) > 70 ? fname == 'ControlP' ? g:lightline.ctrlp_item :
        \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
        \ ('' != fname ? fname : '[No Name]') .
        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+       \ : ''
 endfunction
 
 function! LightlineFileformat()
@@ -68,9 +93,8 @@ endfunction
 function! LightlineMode()
   let fname = expand('%:t')
   return fname == 'ControlP' ? 'CtrlP' :
-       \ fname == '__Mundo__' ? 'Mundo' :
-       \ fname == '__Mundo_Preview__' ? 'Mundo Preview' :
-       \ winwidth(0) > 60 ? lightline#mode() : ''
+       \ &ft == 'fern' ? 'Fern' :
+       \ winwidth(0) > 70 ? lightline#mode() : ''
 endfunction
 
 function! CtrlPMark()
@@ -100,17 +124,3 @@ function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
 
-
-" let g:lightline = {
-"      \ 'colorscheme': 'icebergDark',
-"      \ 'active': {
-"      \   'left': [ [ 'mode', 'paste' ],
-"      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-"      \ },
-"      \ 'component_function': {
-"      \   'cocstatus': 'coc#status'
-"      \ },
-"      \ }
-"
-" " Use auocmd to force lightline update.
-" autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
