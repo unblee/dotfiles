@@ -128,9 +128,6 @@ set pumheight=10
 " updatetime(ms)
 set updatetime=100
 
-" 80文字目で線を表示
-set colorcolumn=80
-
 " undo 履歴
 set undofile
 set undodir=~/.cache/vimundofile
