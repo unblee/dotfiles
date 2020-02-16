@@ -33,6 +33,7 @@ function! s:show_documentation()
 endfunction
 
 " Using CocList
+nnoremap <silent> <space>l  :<C-u>CocList<cr>
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Show commands
