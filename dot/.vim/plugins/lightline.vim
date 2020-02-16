@@ -70,6 +70,9 @@ function! LightlineFilename()
   if path[:len(root)-1] ==# root
     return path[len(root)+1:]
   endif
+  if path =~ '^term:'
+    return ''
+  endif
   let fname = expand('%')
   return winwidth(0) > 70 ? fname == 'ControlP' ? g:lightline.ctrlp_item :
        \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .

@@ -7,3 +7,9 @@ if IsWindows()
 else
   let g:python3_host_prog = '/usr/local/bin/python3'
 endif
+
+" Make Terminal default mode insert
+augroup MyTerminal
+  autocmd!
+  autocmd TermOpen term://* set nonumber | startinsert
+augroup END
