@@ -168,7 +168,6 @@ call plug#begin(s:plugged_dir)
 
   " git blame
   Plug 'rhysd/git-messenger.vim'
-call plug#end()
 
   " better '%'
   Plug 'andymass/vim-matchup'
@@ -178,6 +177,8 @@ call plug#end()
 
   " brackets
   Plug 'jiangmiao/auto-pairs'
+
+call plug#end()
 " }}
 
 
