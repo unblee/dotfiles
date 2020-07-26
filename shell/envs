@@ -70,3 +70,6 @@ export NODE_VERSION_PREFIX=""
 
 # brew
 export PATH="/usr/local/sbin:$PATH"
+
+# krew
+export PATH="${PATH}:${HOME}/.krew/bin"
