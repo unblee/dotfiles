@@ -58,3 +58,6 @@ alias ....='cd ../../..'
 
 # vim
 alias vim=nvim
+
+# fd
+alias fd='fd --hidden'
