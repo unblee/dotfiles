@@ -175,6 +175,9 @@ call plug#begin(s:plugged_dir)
   " brackets
   Plug 'jiangmiao/auto-pairs'
 
+  " Terminal
+  Plug 'kassio/neoterm'
+
 call plug#end()
 " }}
 
