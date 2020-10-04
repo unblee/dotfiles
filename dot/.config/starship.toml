@@ -1,31 +1,33 @@
-scan_timeout = 10
-
-prompt_order = [
-  "directory",
-  "git_branch",
-  "git_state",
-  "kubernetes",
-  "line_break",
-  "time",
-  "character",
-]
-
-[directory]
-truncation_length = 100
-truncate_to_repo = false
-style = ""
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$kubernetes\
+$line_break\
+$time\
+$username\
+$hostname\
+$shlvl\
+$status\
+$character
+"""
 
 [git_branch]
 style = "green"
 
-[kubernetes]
+[directory]
+truncation_length = 100
+truncate_to_repo = false
 style = "blue"
-disabled = false
 
 [time]
 disabled = false
-format = "%F %T JST"
-style = ""
+format = "$time "
+time_format = "%F %TJST"
+utc_time_offset = "+9"
 
-[character]
-symbol = "$"
+[kubernetes]
+disabled = false
+style = "blue"
+format = "[$symbol$context( \\($namespace\\) )]($style)"
