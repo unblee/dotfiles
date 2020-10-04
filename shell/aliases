@@ -60,4 +60,4 @@ alias ....='cd ../../..'
 alias vim=nvim
 
 # fd
-alias fd='fd --hidden'
+alias fd='fd --hidden --exclude=".git"'
