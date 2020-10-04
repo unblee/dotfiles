@@ -82,3 +82,5 @@
 [diff-so-fancy]
   stripLeadingSymbols = false
   changeHunkIndicators = true
+[merge]
+	conflictStyle = diff3
