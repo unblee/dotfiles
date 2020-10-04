@@ -58,9 +58,6 @@ call plug#begin(s:plugged_dir)
   " 移動支援
   Plug 'easymotion/vim-easymotion'
 
-  " f 拡張
-  Plug 'rhysd/clever-f.vim'
-
   " 日本語ヘルプ
   Plug 'vim-jp/vimdoc-ja'
 
