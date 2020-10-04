@@ -13,7 +13,12 @@ source $HOME/dotfiles/shell/loader
 # NOTE: set fpath before compinit
 #
 
+if [[ ! -e ~/.zinit/bin ]]; then
+  mkdir ~/.zinit
+  git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+fi
 
+source ~/.zinit/bin/zinit.zsh
 
 compdir=~/.zsh/completions
 _has kops && (bash -c "kops completion zsh > $compdir/_kops" &)
@@ -238,22 +243,29 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # added by travis gem
 [ -f /Users/unblee/.travis/travis.sh ] && source /Users/unblee/.travis/travis.sh
 
-### Added by Zplugin's installer
-source '/Users/unblee/.zplugin/bin/zplugin.zsh'
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light zsh-users/zsh-completions
-zplugin light Tarrasch/zsh-autoenv
-zplugin light paulirish/git-open
-zplugin light lukechilds/zsh-nvm
-zplugin ice wait"!0" as"program" pick"bin/http_code"; zplugin load b4b4r07/http_code
-zplugin ice wait"!0" from"gh-r" as"program"; zplugin load simeji/jid
-zplugin ice wait"!0" as"program" pick"git-foresta"; zplugin load takaaki-kasai/git-foresta
-zplugin ice wait"!0" from"gh-r" as"program" mv"fzf-* -> fzf"; zplugin load junegunn/fzf-bin
-zplugin ice wait"!0" from"gh-r" as"program" mv"chksum_v0.2.0_darwin_amd64/chksum -> chksum"; zplugin load unblee/chksum
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light Tarrasch/zsh-autoenv
+zinit light paulirish/git-open
+zinit light lukechilds/zsh-nvm
+
+zinit ice as"program" pick"bin/http_code"
+zinit load b4b4r07/http_code
+
+zinit ice from"gh-r" as"program"
+zinit load simeji/jid
+
+zinit ice as"program" pick"git-foresta"
+zinit load takaaki-kasai/git-foresta
+
+zinit ice from"gh-r" as"program" mv"chksum_v0.2.0_darwin_amd64/chksum -> chksum"
+zinit load unblee/chksum
+
+zinit ice from"gh-r" as"program"
+zinit load b4b4r07/git-bump
 
 # history
 _select-history() {
