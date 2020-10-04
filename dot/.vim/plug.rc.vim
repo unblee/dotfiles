@@ -30,6 +30,9 @@ call plug#begin(s:plugged_dir)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc-neco'
 
+  " C++
+  Plug 'jackguo380/vim-lsp-cxx-highlight'
+
   " Linter
   Plug 'dense-analysis/ale'
   Plug 'maximbaz/lightline-ale'

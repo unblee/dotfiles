@@ -1,13 +1,30 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "rust"
-  ]
-  ,
+  ],
+  "diagnostic.enableMessage": "never",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.errorSign": "🚫 ",
+  "suggest.noselect": false,
+  "clangd.semanticHighlighting": true,
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", "Gopkg.toml", "main.go"],
-      "filetypes": ["go"]
+    "golangci-lint-languageserver": {
+      "command": "golangci-lint-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--out-format", "json",
+          "--enable-all",
+          "--disable", "gochecknoglobals",
+          "--disable", "gomnd",
+          "--disable", "lll",
+          "--disable", "maligned",
+          "--disable", "wsl"
+        ]
+      }
     }
   }
 }

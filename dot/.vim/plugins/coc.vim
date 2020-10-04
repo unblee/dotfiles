@@ -1,15 +1,26 @@
+let g:coc_status_error_sign = '🚫 '
+let g:coc_status_warning_sign = '  '
+
 " jsonc
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Extensions to install automatically
 let g:coc_global_extensions = [
+      \ "coc-clangd",
       \ "coc-css",
+      \ "coc-dictionary",
+      \ "coc-emoji",
+      \ "coc-go",
       \ "coc-html",
       \ "coc-json",
-      \ "coc-rls",
+      \ "coc-rust-analyzer",
+      \ "coc-sh",
       \ "coc-snippets",
       \ "coc-solargraph",
+      \ "coc-tag",
       \ "coc-tsserver",
+      \ "coc-word",
+      \ "coc-yaml",
       \ ]
 
 " Highlight symbol under cursor on CursorHold
@@ -35,30 +46,40 @@ endfunction
 " Using CocList
 nnoremap <silent> <space>l  :<C-u>CocList<cr>
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Show code actions
+nnoremap <silent> <space>a  :<C-u>CocAction('codeAction')<cr>
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gf <Plug>(coc-refactor)
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 
-" use <tab> for trigger completion and navigate to the next complete item
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? coc#_select_confirm() :
+  \ coc#expandableOrJumpable() ?
+  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+let g:coc_snippet_next = '<tab>'
+
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
