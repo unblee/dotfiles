@@ -1,5 +1,5 @@
 {
-  "title": "left_command + hjkl -> arrow",
+  "title": "left_command combination",
   "rules": [
     {
       "description": "left_command + h -> left arrow",
