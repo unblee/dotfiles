@@ -60,3 +60,18 @@ clear-aws-mfa() {
   export AWS_SECRET_ACCESS_KEY=$_AWS_SECRET_ACCESS_KEY
   unset AWS_SESSION_TOKEN _AWS_ACCESS_KEY_ID _AWS_SECRET_ACCESS_KEY
 }
+
+# convert to gif
+# from. https://qiita.com/kosuke0820/items/ebeb0c59b603c7224eac
+togif() {
+  ffmpeg -i $1 -an -r 10 output_%04d.png 2> /dev/null # 10frames/secでpng作成
+  [[ $? != 0 ]] && echo "failed. please check argument." && return
+  echo "converting..."
+  convert *.png -resize 40% resized_%04d.png    # 作成したpngを40%にリサイズ
+  convert output_*.png result.gif              # gifに変換
+  rm -f output_*.png
+  rm -f resized_*.png
+  echo "DONE"
+  echo "save to 'result.gif'"
+  open $(pwd)
+}
