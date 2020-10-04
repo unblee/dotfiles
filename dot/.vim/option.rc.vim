@@ -137,3 +137,6 @@ let mapleader = ';'
 
 " don't display the mode information in the statusline
 set noshowmode
+
+" Character to be displayed on the inactive status line
+set fillchars+=stlnc:-
