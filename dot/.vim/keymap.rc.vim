@@ -11,10 +11,6 @@ cnoremap w!! w !sudo tee > /dev/null %
 " set clipboard+=unnamed,autoselect
 vnoremap <Leader>y "+y
 
-" インクリメント、デクリメント
-nnoremap + <C-a>
-nnoremap - <C-x>
-
 " タブ移動
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
