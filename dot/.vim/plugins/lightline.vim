@@ -24,7 +24,7 @@ let g:lightline.inactive.right = []
 
 let g:lightline.active = {}
 let g:lightline.active.left = [
-     \   [ 'mode' ], [ 'filename' ], [ 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'cocstatus', 'currentfunction' ], [ 'ctrlpmark' ]
+     \   [ 'mode' ], [ 'filename' ], [ 'cocstatus', 'currentfunction' ], [ 'ctrlpmark' ]
      \ ]
 let g:lightline.active.right = [
      \ [], [], [ 'fileformat', 'fileencoding', 'filetype' ]
@@ -41,21 +41,6 @@ let g:lightline.component_function = {
      \   'currentfunction': 'CocCurrentFunction',
      \ }
 
-let g:lightline.component_expand = {
-     \   'linter_warnings': 'lightline#ale#warnings',
-     \   'linter_errors': 'lightline#ale#errors',
-     \   'linter_ok': 'lightline#ale#ok',
-     \ }
-
-let g:lightline.component_type = {
-     \   'linter_warnings': 'warning',
-     \   'linter_errors': 'error',
-     \ }
-
-let g:lightline#ale#indicator_warnings = '⚠ '
-let g:lightline#ale#indicator_errors = '🚫'
-let g:lightline#ale#indicator_ok = '✅'
-
 function! LightlineModified()
   return &ft =~ 'help\|fern' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
@@ -67,18 +52,20 @@ endfunction
 function! LightlineFilename()
   let root = fnamemodify(get(b:, 'gitbranch_path'), ':h:h')
   let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
   if path =~ '^term:'
     return ''
   endif
-  let fname = expand('%')
-  return winwidth(0) > 70 ? fname == 'ControlP' ? g:lightline.ctrlp_item :
-       \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-       \ ('' != fname ? fname : '[No Name]') .
-       \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-       \ : ''
+  if path =~ '^' . $GHQ_ROOT . '/'
+    let path = path[len($GHQ_ROOT)+1:]
+  endif
+  if path =~ '^' . $HOME . '/'
+    let path = '~/' . path[len($HOME)+1:]
+  endif
+  return winwidth(0) > 70 ? path == 'ControlP' ? g:lightline.ctrlp_item :
+      \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+      \ ('' != path ? path : '[No Name]') .
+      \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+      \ : ''
 endfunction
 
 function! LightlineFileformat()
@@ -126,4 +113,3 @@ endfunction
 function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
-
