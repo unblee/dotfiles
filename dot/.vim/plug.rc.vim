@@ -50,10 +50,10 @@ call plug#begin(s:plugged_dir)
   " toml
   Plug 'cespare/vim-toml', { 'for': 'toml' }
 
-  " ランチャ
-  Plug 'ctrlpvim/ctrlp.vim'
-  " ctrl matcher
-  Plug 'FelikZ/ctrlp-py-matcher'
+  " " ランチャ
+  " Plug 'ctrlpvim/ctrlp.vim'
+  " " ctrl matcher
+  " Plug 'FelikZ/ctrlp-py-matcher'
 
   " 移動支援
   Plug 'easymotion/vim-easymotion'
