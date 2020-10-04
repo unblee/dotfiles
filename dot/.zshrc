@@ -314,3 +314,5 @@ source $HOME/local/google-cloud-sdk/completion.zsh.inc
 export PATH=/Users/unblee/bin:$PATH
 
 eval "$(starship init zsh)"
+
+source /usr/local/opt/asdf/asdf.sh
