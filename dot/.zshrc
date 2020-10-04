@@ -9,40 +9,22 @@
 source $HOME/dotfiles/shell/loader
 
 #
-# completion
-#
-
-# travis gem
-[ -f /home/unblee/.travis/travis.sh ] && source /home/unblee/.travis/travis.sh
-
-COMPLETIONS_DIR=${DOTFILES}/dot/.zsh/completions
-
-# kubectl(k8s) completion
-_has kubectl
-[[ $? == 0 ]] && kubectl completion zsh > ${COMPLETIONS_DIR}/_kubectl
-
-# helm(k8s) completion
-_has helm
-[[ $? == 0 ]] && helm completion zsh > ${COMPLETIONS_DIR}/_helm
-
-# kops(k8s) completion
-_has kops
-[[ $? == 0 ]] && kops completion zsh > ${COMPLETIONS_DIR}/_kops
-
-# rustup completion
-_has rustup
-[[ $? == 0 ]] && rustup completions zsh > ${COMPLETIONS_DIR}/_rustup
-
-# minikube
-_has minikube
-[[ $? == 0 ]] && minikube completion zsh > ${COMPLETIONS_DIR}/_minikube
-
-#
 # settings for fpath
 # NOTE: set fpath before compinit
 #
 
-fpath+=${COMPLETIONS_DIR}
+
+
+compdir=~/.zsh/completions
+_has kops && (bash -c "kops completion zsh > $compdir/_kops" &)
+_has minikube && (bash -c "minikube completion zsh > $compdir/_minikube" &)
+_has rustup && (bash -c "rustup completions zsh > $compdir/_rustup" &)
+_has cargo && [[ ! -e "$compdir/_cargo" ]] && ln -s ~/.rustup/toolchains/stable-x86_64-apple-darwin/share/zsh/site-functions/_cargo $compdir/_cargo
+
+
+fpath=(/usr/local/share/zsh/site-functions ~/.zsh/completions $fpath)
+autoload -Uz compinit
+compinit
 
 #
 # keybind
