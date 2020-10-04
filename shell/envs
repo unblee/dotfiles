@@ -16,6 +16,12 @@ if [[ "${PLATFORM}" == "darwin" ]]; then
   if [[ -e /usr/local/opt/gnu-sed/libexec/gnubin ]]; then
     PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
   fi
+  if [[ -e /usr/local/opt/make/libexec/gnubin ]]; then
+    PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+  fi
+  if [[ -e /usr/local/opt/curl/bin ]]; then
+    export PATH="/usr/local/opt/curl/bin:$PATH"
+  fi
 fi
 
 # Homebrew
@@ -73,3 +79,9 @@ export PATH="/usr/local/sbin:$PATH"
 
 # krew
 export PATH="${PATH}:${HOME}/.krew/bin"
+
+# clangd
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --hidden --exclude=".git"'
