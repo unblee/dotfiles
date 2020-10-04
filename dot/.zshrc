@@ -313,7 +313,4 @@ source $HOME/local/google-cloud-sdk/completion.zsh.inc
 
 export PATH=/Users/unblee/bin:$PATH
 
-[[ -e "/Users/unblee/lib/oracle-cli/lib/python3.7/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/Users/unblee/lib/oracle-cli/lib/python3.7/site-packages/oci_cli/bin/oci_autocomplete.sh"
-
-# prompt
 eval "$(starship init zsh)"
