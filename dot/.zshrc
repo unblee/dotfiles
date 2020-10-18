@@ -189,30 +189,6 @@ if [ ! -e ${HOME}/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-#
-# tmux
-#
-
-launch_tmux() {
-  if [[ -z $TMUX ]]; then
-    tmux list-sessions > /dev/null 2>&1
-    if [[ $? != 0 ]]; then
-      tmux new-session
-      return
-    fi
-    # already exists sessions
-    echo -n "Do you attach to an existing tmux session?(y/N): "
-    if read -q; then
-      tmux attach-session -t 0
-    else
-      return  # Start terminal normally
-    fi
-  fi
-}
-if _has tmux; then
-  launch_tmux
-fi
-
 # pipenv completion
 _has pipenv
 [[ $? == 0 ]] && eval "$(pipenv --completion)"
@@ -307,3 +283,26 @@ export PATH=/Users/unblee/bin:$PATH
 eval "$(starship init zsh)"
 
 source /usr/local/opt/asdf/asdf.sh
+
+# tmux
+#--------------------------------------------------
+
+launch_tmux() {
+  if [[ -z $TMUX ]]; then
+    tmux list-sessions > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+      tmux new -s root
+      return
+    fi
+    # already exists sessions
+    echo -n "Do you attach to an existing tmux session?(y/N): "
+    if read -q; then
+      tmux attach -t root
+    else
+      return  # Start terminal normally
+    fi
+  fi
+}
+if _has tmux; then
+  launch_tmux
+fi
