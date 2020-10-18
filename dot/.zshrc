@@ -288,7 +288,7 @@ source /usr/local/opt/asdf/asdf.sh
 #--------------------------------------------------
 
 launch_tmux() {
-  if [[ -z $TMUX ]]; then
+  if [[ -z "$TMUX" ]]; then
     tmux list-sessions > /dev/null 2>&1
     if [[ $? != 0 ]]; then
       tmux new -s root
