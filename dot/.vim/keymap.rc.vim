@@ -14,3 +14,5 @@ vnoremap <Leader>y "+y
 " タブ移動
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
+
+nmap <C-w>v <C-w>v<C-w><C-w>
