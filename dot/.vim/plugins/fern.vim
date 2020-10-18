@@ -1,4 +1,4 @@
-let g:fern#renderer = "devicons"
+let g:fern#renderer = "nerdfont"
 let g:fern#default_hidden = 1
 
 nnoremap <silent><space>f  :Fern . -drawer -toggle -reveal=%<cr>

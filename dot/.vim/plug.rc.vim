@@ -162,8 +162,8 @@ call plug#begin(s:plugged_dir)
 
   " filer
   Plug 'lambdalisue/fern.vim'
-  Plug 'lambdalisue/fern-renderer-devicons.vim'
-  Plug 'ryanoasis/vim-devicons'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  Plug 'lambdalisue/nerdfont.vim'
   Plug 'lambdalisue/fern-mapping-project-top.vim'
 
   " git blame
