@@ -15,4 +15,4 @@ vnoremap <Leader>y "+y
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 
-nmap <C-w>v <C-w>v<C-w><C-w>
+nnoremap <C-w>v <C-w>v<C-w><C-w>
