@@ -193,33 +193,24 @@ fi
 # tmux
 #
 
-# http://qiita.com/ssh0/items/a9956a74bff8254a606a
-_has tmux
-if [[ $? == 0 ]]; then
+launch_tmux() {
   if [[ -z $TMUX ]]; then
-    # already exists sessions
     tmux list-sessions > /dev/null 2>&1
     if [[ $? != 0 ]]; then
       tmux new-session
-      exit
+      return
     fi
-
-    TMUX_ID=`tmux list-sessions`
-
-    create_new_session="Create New Session"
-    TMUX_ID="${create_new_session}:\n${TMUX_ID}"
-    TMUX_ID=`echo ${TMUX_ID} | fzf --reverse | cut -d: -f1`
-
-    if [[ "$TMUX_ID" == "${create_new_session}" ]]; then
-      tmux new-session
-      exit
-    elif [[ -n "$TMUX_ID" ]]; then
-      tmux attach-session -t "$TMUX_ID"
-      exit
+    # already exists sessions
+    echo -n "Do you attach to an existing tmux session?(y/N): "
+    if read -q; then
+      tmux attach-session -t 0
     else
-      :  # Start terminal normally
+      return  # Start terminal normally
     fi
   fi
+}
+if _has tmux; then
+  launch_tmux
 fi
 
 # pipenv completion
