@@ -181,6 +181,9 @@ call plug#begin(s:plugged_dir)
   " Terminal
   Plug 'kassio/neoterm'
 
+  " CamelCaseMotion
+  Plug 'bkad/CamelCaseMotion'
+
 call plug#end()
 " }}
 
