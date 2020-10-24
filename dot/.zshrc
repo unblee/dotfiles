@@ -284,8 +284,9 @@ eval "$(starship init zsh)"
 
 source /usr/local/opt/asdf/asdf.sh
 
-# tmux
-#--------------------------------------------------
+# Starting tmux
+# Note: The location of this section is **required** at the end of the .zshrc.
+#-----------------------------------------------------------------------
 
 launch_tmux() {
   if [[ -z "$TMUX" ]]; then
