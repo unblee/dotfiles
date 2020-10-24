@@ -26,6 +26,7 @@ fi
 
 # Homebrew
 [[ -d /usr/local/bin ]] && [[ $PATH =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
+[[ -d /usr/local/sbin ]] && [[ $PATH =~ /usr/local/sbin ]] || export PATH=/usr/local/sbin:$PATH
 
 # ページャ
 export PAGER=less
@@ -51,6 +52,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/local/bin:$PATH
 
 # ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 if _has ruby; then
   ruby_version=$(ruby -v | cut -f 2 -d " " | gsed -r "s/([0-9]\.[0-9])\..+/\1.0/")
   ruby_bin_dir=${HOME}/.gem/ruby/${ruby_version}/bin
@@ -78,10 +80,6 @@ export NVM_LAZY_LOAD=true
 export NODE_VERSIONS="$NVM_DIR/versions/node"
 export NODE_VERSION_PREFIX=""
 
-
-# brew
-export PATH="/usr/local/sbin:$PATH"
-
 # krew
 export PATH="${PATH}:${HOME}/.krew/bin"
 
@@ -90,3 +88,13 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --hidden --exclude=".git"'
+
+# python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# google cloud sdk
+export PATH=$HOME/local/google-cloud-sdk/bin:$PATH
+source $HOME/local/google-cloud-sdk/completion.zsh.inc
+
+# local bin
+export PATH=$HOME/bin:$PATH
