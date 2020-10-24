@@ -6,7 +6,6 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden --glob="!.git/" -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': '--reverse --delimiter : --nth 4..'}), <bang>0)
 
-nmap <silent> <C-p> :Files<CR>
 nnoremap <silent> fp :Files<CR>
 nnoremap <silent> ff :Buffers<CR>
 nnoremap <silent> fl :BLines<CR>
