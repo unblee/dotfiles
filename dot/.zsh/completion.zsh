@@ -1,10 +1,7 @@
 source ${DOTFILES}/shell/funcs
 
-#
-# settings for fpath
-# NOTE: set fpath before compinit
-#
-
+# Configuration completion of zsh
+#-----------------------
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -30,18 +27,17 @@ select-word-style default
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
+# Configuring completion of user added commands
+#-----------------------------------------------
+
 compdir=~/.zsh/completions
-_has kops && (bash -c "kops completion zsh > $compdir/_kops" &)
-_has minikube && (bash -c "minikube completion zsh > $compdir/_minikube" &)
-_has rustup && (bash -c "rustup completions zsh > $compdir/_rustup" &)
+_has kops && kops completion zsh > $compdir/_kops
+_has minikube && minikube completion zsh > $compdir/_minikube
+_has rustup && rustup completions zsh > $compdir/_rustup
 _has cargo && [[ ! -e "$compdir/_cargo" ]] && ln -s ~/.rustup/toolchains/stable-x86_64-apple-darwin/share/zsh/site-functions/_cargo $compdir/_cargo
+_has pipenv && eval "$(pipenv --completion)"
 
-# pipenv completion
-_has pipenv
-[[ $? == 0 ]] && eval "$(pipenv --completion)"
-
-_has gocomplete
-if [[ $? == 0 ]]; then
+if _has gocomplete; then
   autoload -U +X bashcompinit && bashcompinit
   complete -o nospace -C ${GOPATH}/bin/gocomplete go
 fi
@@ -51,7 +47,7 @@ fi
 
 source /usr/local/opt/asdf/asdf.sh
 
+# NOTE: set fpath before compinit
 fpath=(/usr/local/share/zsh/site-functions ~/.zsh/completions $fpath)
 autoload -Uz compinit
 compinit
-
