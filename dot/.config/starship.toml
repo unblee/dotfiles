@@ -3,6 +3,7 @@ $directory\
 $git_branch\
 $git_commit\
 $git_state\
+${custom.kubefork}\
 $kubernetes\
 $line_break\
 $time\
@@ -14,12 +15,17 @@ $character
 """
 
 [git_branch]
+format = "[$symbol$branch]($style) "
+symbol = " "
 style = "green"
 
 [directory]
 truncation_length = 100
 truncate_to_repo = false
 style = "blue"
+
+[directory.substitutions]
+"~/workspace/src/" = ""
 
 [time]
 disabled = false
@@ -31,3 +37,10 @@ utc_time_offset = "+9"
 disabled = false
 style = "blue"
 format = "[$symbol$context( \\($namespace\\) )]($style)"
+
+[custom.kubefork]
+command = "echo  $KUBE_FORK_TARGET_ENV.$KUBE_FORK_TARGET_NAMESPACE"
+shell = ["/bin/bash"]
+when = """ test -n "$KUBE_FORK_TARGET_ENV" """
+format = "[$output]($style) "
+style = "yellow"
