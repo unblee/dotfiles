@@ -18,6 +18,7 @@
           "run",
           "--out-format", "json",
           "--enable-all",
+          "--disable", "funlen",
           "--disable", "gochecknoglobals",
           "--disable", "gomnd",
           "--disable", "lll",
