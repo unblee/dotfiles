@@ -1,17 +1,18 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "rust",
-    "javascript",
-    "typescript",
     "css",
-    "less",
-    "scss",
-    "json",
+    "go",
     "graphql",
+    "html",
+    "javascript",
+    "json",
+    "less",
     "markdown",
+    "rust",
+    "scss",
+    "typescript",
     "vue",
-    "yaml",
-    "html"
+    "yaml"
   ],
   "diagnostic.enableMessage": "never",
   "diagnostic.virtualText": true,
@@ -20,6 +21,11 @@
   "suggest.noselect": false,
   "clangd.semanticHighlighting": true,
   "languageserver": {
+    "efm": {
+      "command": "efm-langserver",
+      "args": [],
+      "filetypes": ["go"]
+    },
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
       "filetypes": ["go"],

@@ -34,8 +34,8 @@ call plug#begin(s:plugged_dir)
   Plug 'jackguo380/vim-lsp-cxx-highlight'
 
   " Linter
-  Plug 'dense-analysis/ale'
-  Plug 'maximbaz/lightline-ale'
+  " Plug 'dense-analysis/ale'
+  " Plug 'maximbaz/lightline-ale'
 
   " golang
   Plug 'mattn/vim-goaddtags'
