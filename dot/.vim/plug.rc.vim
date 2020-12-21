@@ -59,8 +59,8 @@ call plug#begin(s:plugged_dir)
   Plug 'alampros/vim-styled-jsx'
 
   " 現在のカーソル位置のコンテキストによって filetype を切り換える
-  Plug 'Shougo/context_filetype.vim'
-  Plug 'osyo-manga/vim-precious'
+  " Plug 'Shougo/context_filetype.vim'
+  " Plug 'osyo-manga/vim-precious'
 
   " toml
   Plug 'cespare/vim-toml', { 'for': 'toml' }
