@@ -178,9 +178,6 @@ call plug#begin(s:plugged_dir)
   " brackets
   Plug 'jiangmiao/auto-pairs'
 
-  " CamelCaseMotion
-  Plug 'bkad/CamelCaseMotion'
-
 call plug#end()
 " }}
 
