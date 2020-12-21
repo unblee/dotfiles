@@ -1,6 +1,17 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "rust"
+    "rust",
+    "javascript",
+    "typescript",
+    "css",
+    "less",
+    "scss",
+    "json",
+    "graphql",
+    "markdown",
+    "vue",
+    "yaml",
+    "html"
   ],
   "diagnostic.enableMessage": "never",
   "diagnostic.virtualText": true,
