@@ -89,3 +89,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use <C-n> to trigger completion.
 inoremap <silent><expr> <C-n> coc#refresh()
+
+" format on save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')

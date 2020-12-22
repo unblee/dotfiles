@@ -20,12 +20,11 @@
   "diagnostic.errorSign": "🚫 ",
   "suggest.noselect": false,
   "clangd.semanticHighlighting": true,
+  "go.goplsOptions":{
+    "gofumpt":true,
+    "completeUnimported": true
+  },
   "languageserver": {
-    "efm": {
-      "command": "efm-langserver",
-      "args": [],
-      "filetypes": ["go"]
-    },
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
       "filetypes": ["go"],
