@@ -36,6 +36,7 @@ _has minikube && minikube completion zsh > $compdir/_minikube
 _has rustup && rustup completions zsh > $compdir/_rustup
 _has cargo && [[ ! -e "$compdir/_cargo" ]] && ln -s ~/.rustup/toolchains/stable-x86_64-apple-darwin/share/zsh/site-functions/_cargo $compdir/_cargo
 _has pipenv && eval "$(pipenv --completion)"
+_has poetry && poetry completions > $compdir/_poetry
 
 if _has gocomplete; then
   autoload -U +X bashcompinit && bashcompinit

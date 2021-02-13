@@ -83,6 +83,10 @@ export FZF_DEFAULT_COMMAND='fd --hidden --exclude=".git"'
 
 # python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# pyenv
+export PATH="$HOME/.poetry/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 # google cloud sdk
 export PATH=$HOME/local/google-cloud-sdk/bin:$PATH

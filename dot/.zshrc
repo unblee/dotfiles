@@ -61,3 +61,8 @@ launch_tmux() {
 if _has tmux; then
   launch_tmux
 fi
+
+# pyenv
+if _has pyenv; then
+  eval "$(pyenv init -)"
+fi
