@@ -51,14 +51,6 @@ export GO15VENDOREXPERIMENT=1
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/local/bin:$PATH
 
-# ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-if _has ruby; then
-  ruby_version=$(ruby -v | cut -f 2 -d " " | gsed -r "s/([0-9]\.[0-9])\..+/\1.0/")
-  ruby_bin_dir=${HOME}/.gem/ruby/${ruby_version}/bin
-  [[ -d ${ruby_bin_dir} ]] && export PATH=${ruby_bin_dir}:${PATH}
-fi
-
 # ghq
 export GHQ_ROOT=$GOPATH/src
 
@@ -98,3 +90,13 @@ source $HOME/local/google-cloud-sdk/completion.zsh.inc
 
 # local bin
 export PATH=$HOME/bin:$PATH
+
+# ruby gem
+RUBY_GEM_PATH=$HOME/.gem/ruby
+if test -d "$RUBY_GEM_PATH"; then
+  ls "$RUBY_GEM_PATH" | (while read v
+    do
+      export PATH="$RUBY_GEM_PATH/$v/bin:$PATH"
+    done
+  )
+fi
