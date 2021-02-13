@@ -8,12 +8,12 @@ case "${PLATFORM}" in
   darwin)
     alias ls="ls -G"
     alias ll="ls -lG"
-    alias la="ls -laG"
+    alias la="ls -lAG"
     ;;
   *)
     alias ls='ls --color'
     alias ll='ls -l --color'
-    alias la='ls -la --color'
+    alias la='ls -lA --color'
     ;;
 esac
 
