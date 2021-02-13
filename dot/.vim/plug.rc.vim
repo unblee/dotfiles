@@ -39,6 +39,7 @@ call plug#begin(s:plugged_dir)
 
   " golang
   Plug 'mattn/vim-goaddtags'
+  Plug 'mattn/vim-goimports'
 
   " markdown
   Plug 'rhysd/vim-gfm-syntax', { 'for': 'markdown' }
@@ -189,6 +190,9 @@ call plug#begin(s:plugged_dir)
 
   " brackets
   Plug 'jiangmiao/auto-pairs'
+
+  " format json
+  Plug 'rhysd/vim-fixjson', {'for': 'json'}
 
 call plug#end()
 " }}
