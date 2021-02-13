@@ -13,7 +13,7 @@
   preloadindex = true
   fscache = true
   filemode = true
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 [push]
   default = simple
 [help]
@@ -27,7 +27,14 @@
   prompt = false
 [interactive]
   singlekey = true
-  diffFilter = (diff-highlight 2>/dev/null || cat)
+  diffFilter = delta --color-only
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
 [fetch]
   prune = true
 [pull]
