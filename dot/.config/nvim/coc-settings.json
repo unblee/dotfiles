@@ -1,7 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
-    "go",
     "graphql",
     "html",
     "javascript",
@@ -20,8 +19,8 @@
   "diagnostic.errorSign": "🚫 ",
   "suggest.noselect": false,
   "clangd.semanticHighlighting": true,
-  "go.goplsOptions":{
-    "gofumpt":true,
+  "go.goplsOptions": {
+    "gofumpt": true,
     "completeUnimported": true
   },
   "languageserver": {
