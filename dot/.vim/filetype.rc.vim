@@ -6,3 +6,7 @@ augroup filetypedetect
   " babel.js
   autocmd BufRead,BufNewFile .babelrc set filetype=json
 augroup END
+
+augroup filetypeindent
+  autocmd BufRead,BufNewFile *.go setlocal noet ts=4 sw=4 sts=4
+augroup END
