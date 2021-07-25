@@ -11,3 +11,5 @@ debug
 .terraform/
 .idea/
 .realize.yaml
+telepresence.log
+.tool-versions

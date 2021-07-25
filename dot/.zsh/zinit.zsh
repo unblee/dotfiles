@@ -10,26 +10,36 @@ source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light Tarrasch/zsh-autoenv
-zinit light paulirish/git-open
-zinit light lukechilds/zsh-nvm
+# Disable turbo mode
+zinit light qoomon/zsh-lazyload
 
-zinit ice as"program" pick"bin/http_code"
-zinit load b4b4r07/http_code
+# Enable turbo mode
+zinit wait lucid light-mode for \
+  Tarrasch/zsh-autoenv \
+  paulirish/git-open \
+  zdharma/fast-syntax-highlighting \
+  as"program" pick"bin/http_code" \
+    b4b4r07/http_code \
+  from"gh-r" as"program" \
+    simeji/jid \
+  as"program" pick"git-foresta" \
+    takaaki-kasai/git-foresta \
+  from"gh-r" as"program" mv"chksum_v0.2.0_darwin_amd64/chksum -> chksum" \
+    unblee/chksum \
+  from"gh-r" as"program" \
+    b4b4r07/git-bump
 
-zinit ice from"gh-r" as"program"
-zinit load simeji/jid
+# Enable turbo mode
+zinit wait lucid atload"zicompinit; zicdreplay" blockf light-mode for \
+  zsh-users/zsh-completions
 
-zinit ice as"program" pick"git-foresta"
-zinit load takaaki-kasai/git-foresta
-
-zinit ice from"gh-r" as"program" mv"chksum_v0.2.0_darwin_amd64/chksum -> chksum"
-zinit load unblee/chksum
-
-zinit ice from"gh-r" as"program"
-zinit load b4b4r07/git-bump
+# lazyload completions
+_has kubectl && lazyload kubectl -- "source <(kubectl completion zsh)"
+_has kops && lazyload kops -- "source <(kops completion zsh)"
+_has minikube && lazyload minikube -- "source <(minikube completion zsh)"
+_has poetry && lazyload poetry -- "source <(poetry completions)"
+_has kind && lazyload kind -- 'source <(kind completion zsh; echo compdef _kind kind)'
+_has helm && lazyload helm -- 'source <(helm completion zsh)'
 
 # history
 _select-history() {

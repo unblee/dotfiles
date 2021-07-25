@@ -62,7 +62,7 @@ if _has tmux; then
   launch_tmux
 fi
 
-# pyenv
-if _has pyenv; then
-  eval "$(pyenv init -)"
+# For profiling
+if (which zprof > /dev/null 2>&1) ;then
+  zprof
 fi

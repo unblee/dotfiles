@@ -31,24 +31,14 @@ zstyle ':zle:*' word-style unspecified
 #-----------------------------------------------
 
 compdir=~/.zsh/completions
-_has kops && kops completion zsh > $compdir/_kops
-_has minikube && minikube completion zsh > $compdir/_minikube
-_has rustup && rustup completions zsh > $compdir/_rustup
-_has cargo && [[ ! -e "$compdir/_cargo" ]] && ln -s ~/.rustup/toolchains/stable-x86_64-apple-darwin/share/zsh/site-functions/_cargo $compdir/_cargo
-_has pipenv && eval "$(pipenv --completion)"
-_has poetry && poetry completions > $compdir/_poetry
 
-if _has gocomplete; then
-  autoload -U +X bashcompinit && bashcompinit
-  complete -o nospace -C ${GOPATH}/bin/gocomplete go
-fi
+_has cargo && [[ ! -e "$compdir/_cargo" ]] && ln -s ~/.rustup/toolchains/stable-x86_64-apple-darwin/share/zsh/site-functions/_cargo $compdir/_cargo
+_has rustup && rustup completions zsh > $compdir/_rustup
 
 # added by travis gem
 [ -f /Users/unblee/.travis/travis.sh ] && source /Users/unblee/.travis/travis.sh
 
-source /usr/local/opt/asdf/asdf.sh
+source "$(brew --prefix asdf)/asdf.sh"
 
 # NOTE: set fpath before compinit
 fpath=(/usr/local/share/zsh/site-functions ~/.zsh/completions $fpath)
-autoload -Uz compinit
-compinit

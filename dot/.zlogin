@@ -1,11 +1,5 @@
-if type direnv > /dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
-fi
+# Hook direnv into your shell.
+eval "$(asdf exec direnv hook zsh)"
 
-if type rbenv > /dev/null 2>&1; then
-  eval "$(rbenv init -)"
-fi
-
-if type nodenv > /dev/null 2>&1; then
-  eval "$(nodenv init -)"
-fi
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }

@@ -155,7 +155,7 @@ call plug#begin(s:plugged_dir)
   Plug 'osyo-manga/vim-anzu'
 
   " sudo save
-  Plug 'lambdalisue/suda.vim'
+  " Plug 'lambdalisue/suda.vim'
 
   " fuzzy finder
   if executable('fzf')
