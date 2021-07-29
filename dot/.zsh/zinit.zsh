@@ -18,6 +18,7 @@ zinit wait lucid light-mode for \
   Tarrasch/zsh-autoenv \
   paulirish/git-open \
   zdharma/fast-syntax-highlighting \
+  hlissner/zsh-autopair \
   as"program" pick"bin/http_code" \
     b4b4r07/http_code \
   from"gh-r" as"program" \
