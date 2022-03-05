@@ -94,3 +94,6 @@ if test -d "$RUBY_GEM_PATH"; then
     done
   )
 fi
+
+# aws sdk
+export AWS_SDK_LOAD_CONFIG=1
