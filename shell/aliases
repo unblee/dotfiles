@@ -61,3 +61,6 @@ alias vim=nvim
 
 # fd
 alias fd='fd --hidden --exclude=".git"'
+
+# hgrep
+alias hgrep="hgrep --hidden --smart-case --glob='!.git/'"
