@@ -13,3 +13,4 @@ debug
 .realize.yaml
 telepresence.log
 .tool-versions
+.vim/
