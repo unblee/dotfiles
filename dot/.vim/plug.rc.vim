@@ -155,7 +155,7 @@ call plug#begin(s:plugged_dir)
   Plug 'osyo-manga/vim-anzu'
 
   " sudo save
-  " Plug 'lambdalisue/suda.vim'
+  Plug 'lambdalisue/suda.vim'
 
   " fuzzy finder
   if executable('fzf')
@@ -194,7 +194,13 @@ call plug#begin(s:plugged_dir)
   " format json
   Plug 'rhysd/vim-fixjson', {'for': 'json'}
 
-call plug#end()
+  " " highlight
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " updating the parsers on update
+
+  " formatter
+  Plug 'mhartington/formatter.nvim'
+
+  call plug#end()
 " }}
 
 
@@ -208,3 +214,76 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme desert
 endtry
+
+lua <<EOF
+
+require('formatter').setup({
+  filetype = {
+    typescriptreact = {
+      -- dprint
+      function()
+        return {
+          exe = "dprint",
+          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+          stdin = true
+          }
+      end
+      -- prettier
+      -- function()
+      --   return {
+      --     exe = "prettier",
+      --     args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+      --     stdin = true
+      --   }
+      -- end
+    },
+    typescript = {
+      -- dprint
+      function()
+        return {
+          exe = "dprint",
+          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+          stdin = true
+          }
+      end
+    },
+    javascriptreact = {
+      -- dprint
+      function()
+        return {
+          exe = "dprint",
+          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+          stdin = true
+          }
+      end
+    },
+    javascript = {
+      -- dprint
+      function()
+        return {
+          exe = "dprint",
+          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+          stdin = true
+          }
+      end
+    },
+    json = {
+      -- dprint
+      function()
+        return {
+          exe = "dprint",
+          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+          stdin = true
+          }
+      end
+    },
+  },
+})
+
+vim.api.nvim_exec([[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx,*.json FormatWrite
+augroup END
+]], true)
+EOF

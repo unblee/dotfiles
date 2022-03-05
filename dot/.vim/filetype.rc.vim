@@ -9,4 +9,5 @@ augroup END
 
 augroup filetypeindent
   autocmd BufRead,BufNewFile *.go setlocal noet ts=4 sw=4 sts=4
+  autocmd BufRead,BufNewFile *.ts,*.tsx,*.js,*.jsx setlocal et ts=4 sw=4 sts=4
 augroup END
