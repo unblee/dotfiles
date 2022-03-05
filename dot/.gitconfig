@@ -91,3 +91,5 @@
   changeHunkIndicators = true
 [merge]
 	conflictStyle = diff3
+[init]
+	defaultBranch = main
