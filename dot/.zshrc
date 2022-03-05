@@ -34,6 +34,9 @@ compdef g='git'
 # init starship
 eval "$(starship init zsh)"
 
+# for asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
+
 # Loading zinit plugins
 source $DOTFILES/dot/.zsh/zinit.zsh
 
