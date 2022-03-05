@@ -3,14 +3,10 @@
     "css",
     "graphql",
     "html",
-    "javascript",
-    "json",
     "less",
     "markdown",
     "rust",
     "scss",
-    "typescript",
-    "vue",
     "yaml"
   ],
   "diagnostic.enableMessage": "never",
@@ -21,8 +17,12 @@
   "clangd.semanticHighlighting": true,
   "go.goplsOptions": {
     "gofumpt": true,
-    "completeUnimported": true
+    "completeUnimported": true,
+    "buildFlags": [
+      "-tags=wireinject"
+    ]
   },
+  "rust-analyzer.checkOnSave.command": "clippy",
   "languageserver": {
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
