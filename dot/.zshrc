@@ -69,3 +69,6 @@ fi
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
+
+# for vscode-neovim https://github.com/vscode-neovim/vscode-neovim#important
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false

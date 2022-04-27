@@ -75,3 +75,16 @@ togif() {
   echo "save to 'result.gif'"
   open $(pwd)
 }
+
+# checkout to master or main
+gm() {
+  if [[ "$(git branch | grep main)" == "  main" ]]; then
+    git checkout "main"
+    return
+  fi
+  if [[ "$(git branch | grep master)" == "  master" ]]; then
+    git checkout "master"
+    return
+  fi
+  echo "No master or main branch"
+}
