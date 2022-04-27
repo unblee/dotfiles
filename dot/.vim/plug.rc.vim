@@ -29,6 +29,7 @@ call plug#begin(s:plugged_dir)
   " LSP
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc-neco'
+  Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
 
   " C++
   Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -192,13 +193,15 @@ call plug#begin(s:plugged_dir)
   Plug 'jiangmiao/auto-pairs'
 
   " format json
-  Plug 'rhysd/vim-fixjson', {'for': 'json'}
+  " Plug 'rhysd/vim-fixjson', {'for': 'json'}
 
   " " highlight
-  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " updating the parsers on update
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " updating the parsers on update
 
-  " formatter
-  Plug 'mhartington/formatter.nvim'
+  " post install (yarn install | npm install) then load plugin only for editing supported files
+  Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': [ 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html' ] }
 
   call plug#end()
 " }}
@@ -214,76 +217,3 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme desert
 endtry
-
-lua <<EOF
-
-require('formatter').setup({
-  filetype = {
-    typescriptreact = {
-      -- dprint
-      function()
-        return {
-          exe = "dprint",
-          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-          stdin = true
-          }
-      end
-      -- prettier
-      -- function()
-      --   return {
-      --     exe = "prettier",
-      --     args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-      --     stdin = true
-      --   }
-      -- end
-    },
-    typescript = {
-      -- dprint
-      function()
-        return {
-          exe = "dprint",
-          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-          stdin = true
-          }
-      end
-    },
-    javascriptreact = {
-      -- dprint
-      function()
-        return {
-          exe = "dprint",
-          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-          stdin = true
-          }
-      end
-    },
-    javascript = {
-      -- dprint
-      function()
-        return {
-          exe = "dprint",
-          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-          stdin = true
-          }
-      end
-    },
-    json = {
-      -- dprint
-      function()
-        return {
-          exe = "dprint",
-          args = {"fmt", "--stdin", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-          stdin = true
-          }
-      end
-    },
-  },
-})
-
-vim.api.nvim_exec([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx,*.json FormatWrite
-augroup END
-]], true)
-EOF
