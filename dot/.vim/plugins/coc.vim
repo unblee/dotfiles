@@ -11,17 +11,17 @@ let g:coc_global_extensions = [
       \ "coc-deno",
       \ "coc-dictionary",
       \ "coc-emoji",
+      \ "coc-eslint",
       \ "coc-go",
       \ "coc-html",
       \ "coc-json",
-      \ "coc-prettier",
+      \ "coc-prisma",
       \ "coc-pyright",
       \ "coc-rust-analyzer",
       \ "coc-sh",
       \ "coc-snippets",
       \ "coc-solargraph",
       \ "coc-tag",
-      \ "coc-tailwindcss",
       \ "coc-tsserver",
       \ "coc-word",
       \ "coc-yaml",
@@ -94,3 +94,8 @@ inoremap <silent><expr> <C-n> coc#refresh()
 
 " format on save
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.prisma :silent call CocAction('format')
+
+" for coc-css
+autocmd FileType css setl iskeyword+=-
+autocmd FileType scss setl iskeyword+=@-@

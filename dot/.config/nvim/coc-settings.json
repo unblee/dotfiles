@@ -14,7 +14,6 @@
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.errorSign": "🚫 ",
   "suggest.noselect": false,
-  "clangd.semanticHighlighting": true,
   "go.goplsOptions": {
     "gofumpt": true,
     "completeUnimported": true,
@@ -40,6 +39,7 @@
           "--disable", "lll",
           "--disable", "maligned",
           "--disable", "nlreturn",
+          "--disable", "varnamelen",
           "--disable", "wsl"
         ]
       }
