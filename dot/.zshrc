@@ -22,9 +22,6 @@ export PATH="$(ruby -e 'print Gem.user_dir + "/bin"'):$PATH"
 # local settings
 [[ -e ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local
 
-# completion
-source $DOTFILES/dot/.zsh/completion.zsh
-
 # tpm(Tmux Plugin Manager)
 if [ ! -e ${HOME}/.tmux/plugins/tpm ]; then
   if [ -! -d ${HOME}/.tmux/plugins ]; then
@@ -37,6 +34,9 @@ if _has tmux; then
   # NOTE: The location of this section is **required** at the end of the .zshrc.
   launch_tmux
 fi
+
+# completion
+source $DOTFILES/dot/.zsh/completion.zsh
 
 # # For profiling
 # if (which zprof > /dev/null 2>&1) ;then
