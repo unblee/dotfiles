@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/bashrc.pre.bash" ]] && . "$HOME/.fig/shell/bashrc.pre.bash"
 #
 # ~/.bashrc
 #
@@ -20,3 +22,6 @@ cmd_exists gocomplete
 
 # added by travis gem
 [ -f /Users/unblee/.travis/travis.sh ] && source /Users/unblee/.travis/travis.sh
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/bashrc.post.bash" ]] && . "$HOME/.fig/shell/bashrc.post.bash"

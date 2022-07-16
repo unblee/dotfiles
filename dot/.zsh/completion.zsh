@@ -31,14 +31,16 @@ zstyle ':zle:*' word-style unspecified
 #-----------------------------------------------
 
 compdir=~/.zsh/completions
+[[ ! -d "$compdir" ]] && mkdir "$compdir" || true
 
-_has cargo && [[ ! -e "$compdir/_cargo" ]] && ln -s ~/.rustup/toolchains/stable-x86_64-apple-darwin/share/zsh/site-functions/_cargo $compdir/_cargo
-_has rustup && rustup completions zsh > $compdir/_rustup
+if _has rustup; then
+  rustup completions zsh rustup > "$compdir/_rustup"
+  rustup completions zsh cargo > "$compdir/_cargo"
+fi
 
-# added by travis gem
-[ -f /Users/unblee/.travis/travis.sh ] && source /Users/unblee/.travis/travis.sh
+. $(brew --prefix asdf)/libexec/asdf.sh
 
-source "$(brew --prefix asdf)/asdf.sh"
+# NOTE: set FPATH before compinit
+export FPATH="$compdir:$FPATH"
 
-# NOTE: set fpath before compinit
-fpath=(/usr/local/share/zsh/site-functions ~/.zsh/completions $fpath)
+autoload -Uz compinit && compinit

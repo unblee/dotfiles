@@ -93,3 +93,5 @@
 	conflictStyle = diff3
 [init]
 	defaultBranch = main
+[ghq]
+  root = ~/workspace/src

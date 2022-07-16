@@ -103,3 +103,11 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
   zstyle ':chpwd:*' recent-dirs-pushd true
 fi
 
+# disable ctrl+d
+# https://zenn.dev/yumafuu/articles/zsh-ctrl-d-do-nothing
+zle -N _do_nothing
+bindkey "^D" _do_nothing
+setopt IGNORE_EOF
+
+# Emacs like keybind
+bindkey -e

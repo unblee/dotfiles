@@ -1,21 +1,25 @@
-#!/bin/bash
-
-_pwd=$(dirname $0)
-source ${_pwd}/envs
+. $(dirname $0)/envs
+. $(dirname $0)/funcs
 
 # ls
-case "${PLATFORM}" in
-  darwin)
-    alias ls="ls -G"
-    alias ll="ls -lG"
-    alias la="ls -lAG"
-    ;;
-  *)
-    alias ls='ls --color'
-    alias ll='ls -l --color'
-    alias la='ls -lA --color'
-    ;;
-esac
+if _has exa; then
+  alias ls="exa"
+  alias ll="exa --long"
+  alias la="exa --long --all"
+else
+  case "$(_platform)" in
+    darwin)
+      alias ls="ls -G"
+      alias ll="ls -lG"
+      alias la="ls -lAG"
+      ;;
+    *)
+      alias ls='ls --color'
+      alias ll='ls -l --color'
+      alias la='ls -lA --color'
+      ;;
+  esac
+fi
 
 # clear
 alias cls="clear"

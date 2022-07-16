@@ -1,5 +1,3 @@
-#!/bin/bash
-
 _pwd=$(dirname $0)
 source ${_pwd}/funcs
 source ${_pwd}/envs

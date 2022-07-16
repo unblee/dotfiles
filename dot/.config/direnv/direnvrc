@@ -1,1 +1,1 @@
-source "$(asdf direnv hook asdf)"
+# source "$(asdf direnv hook asdf)"

@@ -1,34 +1,17 @@
-#!/bin/bash
+. "$(dirname $0)/funcs"
 
-_pwd=$(dirname $0)
-source ${_pwd}/funcs
-
-export DOTFILES=${HOME}/dotfiles
+export DOTFILES="${HOME}/dotfiles"
 
 # Support XDG Base Directory
-export XDG_CONFIG_HOME=${HOME}/.config
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_STATE_HOME="${HOME}/.local/state"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
+export XDG_CONFIG_DIRS="/etc/xdg"
 
-# OS判定
-export PLATFORM=`_platform`
-
-# for macOS
-if [[ "${PLATFORM}" == "darwin" ]]; then
-  if [[ -e /usr/local/opt/gnu-sed/libexec/gnubin ]]; then
-    PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-  fi
-  if [[ -e /usr/local/opt/make/libexec/gnubin ]]; then
-    PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-  fi
-  if [[ -e /usr/local/opt/curl/bin ]]; then
-    export PATH="/usr/local/opt/curl/bin:$PATH"
-  fi
-fi
-
-# Homebrew
-[[ -d /usr/local/bin ]] && [[ $PATH =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
-[[ -d /usr/local/sbin ]] && [[ $PATH =~ /usr/local/sbin ]] || export PATH=/usr/local/sbin:$PATH
-
-# ページャ
+# Pager
 export PAGER=less
 
 # エディタ設定
@@ -38,24 +21,23 @@ export EDITOR=vim
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # ヒストリ設定
-export HISTFILE=$HOME/.zsh_history
+export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-# golang
-export GOPATH=$HOME/workspace
-export PATH=$GOPATH/bin:$PATH
-export GO15VENDOREXPERIMENT=1
+# Go
+export GOPATH="$HOME/workspace"
+export PATH="$GOPATH/bin:$PATH"
 
 # user local bin path
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/local/bin:$PATH"
 
 # ghq
-export GHQ_ROOT=$GOPATH/src
+export GHQ_ROOT="$GOPATH/src"
 
 # rust/cargo
-export PATH=${HOME}/.cargo/bin:${PATH}
+export PATH="${HOME}/.cargo/bin:${PATH}"
 
 # pipenv
 export PIPENV_SHELL_FANCY=1
@@ -72,28 +54,29 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 # fzf
 export FZF_DEFAULT_COMMAND='fd --hidden --exclude=".git"'
 
-# python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # google cloud sdk
 export PATH=$HOME/local/google-cloud-sdk/bin:$PATH
-source $HOME/local/google-cloud-sdk/completion.zsh.inc
+[[ -f "$HOME/local/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/local/google-cloud-sdk/completion.zsh.inc"
 
 # local bin
-export PATH=$HOME/bin:$PATH
-
-# ruby gem
-RUBY_GEM_PATH=$HOME/.gem/ruby
-if test -d "$RUBY_GEM_PATH"; then
-  ls "$RUBY_GEM_PATH" | (while read v
-    do
-      export PATH="$RUBY_GEM_PATH/$v/bin:$PATH"
-    done
-  )
-fi
+export PATH="$HOME/bin:$PATH"
 
 # aws sdk
 export AWS_SDK_LOAD_CONFIG=1
+
+# brew commands
+if _has brew; then
+  export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
+  export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
+  export GUILE_TLS_CERTIFICATE_DIRECTORY=$(brew --prefix)/etc/gnutls/
+  export PATH="$(brew --prefix)/opt/llvm/bin:$PATH"
+  export PATH="$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
+  export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
+  export PATH="$(brew --prefix)/opt/gnu-time/libexec/gnubin:$PATH"
+fi
+
+# 1Password SSH agent
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
