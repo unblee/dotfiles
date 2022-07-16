@@ -25,6 +25,10 @@ gout() {
 }
 
 # git-foresta
+[[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
+if [[ ! -f "$HOME/.local/bin/git-foresta" ]]; then
+  curl -sSL https://github.com/takaaki-kasai/git-foresta/raw/master/git-foresta -o "$HOME/.local/bin/git-foresta" && chmod +x "$HOME/.local/bin/git-foresta"
+fi
 gf() {
   git-foresta --all --style=10 --graph-margin-right=2 | less -RSX
 }
