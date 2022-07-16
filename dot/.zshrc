@@ -1,16 +1,19 @@
-source $HOME/dotfiles/shell/loader
+. "$HOME/dotfiles/shell/loader"
 
 # Ctrl-s による端末ロックを無効化する(stty -a でキーバインドを確認できる)
 stty stop undef
 
-# completion
-source $DOTFILES/dot/.zsh/completion.zsh
-
 # option
-source $DOTFILES/dot/.zsh/option.zsh
+. "$DOTFILES/dot/.zsh/option.zsh"
+
+# bindkey
+. "$DOTFILES/dot/.zsh/bindkey.zsh"
 
 # init starship
 eval "$(starship init zsh)"
+
+# load sheldon
+eval "$(sheldon source)"
 
 # export ruby gems path
 # If not run in .zshrc, system default ruby will be used.
@@ -18,6 +21,9 @@ export PATH="$(ruby -e 'print Gem.user_dir + "/bin"'):$PATH"
 
 # local settings
 [[ -e ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local
+
+# completion
+source $DOTFILES/dot/.zsh/completion.zsh
 
 # tpm(Tmux Plugin Manager)
 if [ ! -e ${HOME}/.tmux/plugins/tpm ]; then

@@ -1,4 +1,4 @@
-source ${DOTFILES}/shell/funcs
+source "${DOTFILES}/shell/funcs"
 
 # Configuration completion of zsh
 #-----------------------
@@ -38,9 +38,14 @@ if _has rustup; then
   rustup completions zsh cargo > "$compdir/_cargo"
 fi
 
+# asdf
 . $(brew --prefix asdf)/libexec/asdf.sh
 
 # NOTE: set FPATH before compinit
 export FPATH="$compdir:$FPATH"
 
 autoload -Uz compinit && compinit
+
+# git
+alias g="git"
+compdef g="git"

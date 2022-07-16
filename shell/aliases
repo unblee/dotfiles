@@ -49,7 +49,6 @@ alias gi="git diff"
 alias gic="git diff --cached"
 alias gpull="git pull"
 alias gpush="git push"
-alias g=git
 
 # ripgrep
 if _has rg; then
