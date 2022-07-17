@@ -26,6 +26,12 @@ brew bundle install --file "$HOME/dotfiles/brew/Brewfile"
 
 ## Deploy
 
+### 1. Link all dot files
+
 ```sh
 "$HOME/dotfiles/scripts/link_all_dot_files"
 ```
+
+### 2. Restart terminal
+
+Stop Terminal.app && Run iTerm.app
