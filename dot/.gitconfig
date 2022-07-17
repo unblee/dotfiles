@@ -94,4 +94,4 @@
 [init]
 	defaultBranch = main
 [ghq]
-  root = ~/workspace/src
+  root = ~/ghq/src

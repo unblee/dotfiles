@@ -26,7 +26,7 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 # Go
-export GOPATH="$HOME/workspace"
+export GOPATH="$HOME/ghq"
 _pathprepend "$GOPATH/bin"
 
 # user local bin path
