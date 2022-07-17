@@ -104,4 +104,12 @@ launch_tmux() {
   fi
 }
 
+brewdump() {
+  brew bundle dump --force --file="$HOME/dotfiles/brew/Brewfile"
+}
+
+brewdumpinstall() {
+  brew bundle install --file="$HOME/dotfiles/brew/Brewfile"
+}
+
 # vim:ft=sh
