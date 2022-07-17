@@ -103,3 +103,5 @@ launch_tmux() {
     fi
   fi
 }
+
+# vim:ft=sh

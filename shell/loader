@@ -3,3 +3,5 @@ source ${_pwd}/funcs
 source ${_pwd}/envs
 source ${_pwd}/commands
 source ${_pwd}/aliases
+
+# vim:ft=sh
