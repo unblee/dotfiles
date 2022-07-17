@@ -1,5 +1,4 @@
-. $(dirname $0)/envs
-. $(dirname $0)/funcs
+. "$HOME/dotfiles/shell/envs"
 
 # ls
 if _has exa; then
@@ -63,7 +62,7 @@ alias ....='cd ../../..'
 alias vim=nvim
 
 # fd
-alias fd='fd --hidden --exclude=".git"'
+alias fd='fd --hidden --no-ignore --exclude=".git/" --exclude="node_modules/"'
 
 # hgrep
 alias hgrep="hgrep --hidden --smart-case --glob='!.git/'"

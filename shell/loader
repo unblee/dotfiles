@@ -1,7 +1,4 @@
-_pwd=$(dirname $0)
-source ${_pwd}/funcs
-source ${_pwd}/envs
-source ${_pwd}/commands
-source ${_pwd}/aliases
+. "$HOME/dotfiles/shell/aliases"
+. "$HOME/dotfiles/shell/commands"
 
 # vim:ft=sh

@@ -17,7 +17,7 @@ eval "$(sheldon source)"
 
 # export ruby gems path
 # If not run in .zshrc, system default ruby will be used.
-export PATH="$(ruby -e 'print Gem.user_dir + "/bin"'):$PATH"
+_pathprepend "$(ruby -e 'print Gem.user_dir + "/bin"')"
 
 # local settings
 [[ -e ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local

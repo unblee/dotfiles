@@ -1,4 +1,4 @@
-. "$(dirname $0)/funcs"
+. "$HOME/dotfiles/shell/funcs"
 
 export DOTFILES="${HOME}/dotfiles"
 
@@ -27,55 +27,52 @@ export SAVEHIST=1000000
 
 # Go
 export GOPATH="$HOME/workspace"
-export PATH="$GOPATH/bin:$PATH"
+_pathprepend "$GOPATH/bin"
 
 # user local bin path
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/local/bin:$PATH"
+_pathprepend "$HOME/.local/bin"
+_pathprepend "$HOME/local/bin"
 
 # ghq
 export GHQ_ROOT="$GOPATH/src"
 
 # rust/cargo
-export PATH="${HOME}/.cargo/bin:${PATH}"
+_pathprepend "${HOME}/.cargo/bin"
 
 # pipenv
 export PIPENV_SHELL_FANCY=1
 
 # composer
-export PATH="${HOME}/.config/composer/vendor/bin:${PATH}"
+_pathprepend "${HOME}/.config/composer/vendor/bin"
 
 # krew
-export PATH="${PATH}:${HOME}/.krew/bin"
-
-# clangd
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+_pathprepend "${HOME}/.krew/bin"
 
 # fzf
-export FZF_DEFAULT_COMMAND='fd --hidden --exclude=".git"'
+export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore --exclude=".git/" --exclude="node_modules/"'
 
 # poetry
-export PATH="$HOME/.poetry/bin:$PATH"
+_pathprepend "$HOME/.poetry/bin"
 
 # google cloud sdk
-export PATH=$HOME/local/google-cloud-sdk/bin:$PATH
+_pathprepend "$HOME/local/google-cloud-sdk/bin:"
 [[ -f "$HOME/local/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/local/google-cloud-sdk/completion.zsh.inc"
 
 # local bin
-export PATH="$HOME/bin:$PATH"
+_pathprepend "$HOME/bin"
 
 # aws sdk
 export AWS_SDK_LOAD_CONFIG=1
 
 # brew commands
 if _has brew; then
-  export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
-  export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
   export GUILE_TLS_CERTIFICATE_DIRECTORY=$(brew --prefix)/etc/gnutls/
-  export PATH="$(brew --prefix)/opt/llvm/bin:$PATH"
-  export PATH="$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
-  export PATH="$(brew --prefix)/opt/gnu-time/libexec/gnubin:$PATH"
+  _pathprepend "$(brew --prefix curl)/bin"
+  _pathprepend "$(brew --prefix gnu-sed)/libexec/gnubin"
+  _pathprepend "$(brew --prefix llvm)/bin"
+  _pathprepend "$(brew --prefix make)/libexec/gnubin"
+  _pathprepend "$(brew --prefix ruby)/bin"
+  _pathprepend "$(brew --prefix gnu-time)/libexec/gnubin"
 fi
 
 # 1Password SSH agent

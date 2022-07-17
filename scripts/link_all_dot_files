@@ -2,6 +2,8 @@
 
 set -e
 
+. "$(dirname $0)/../shell/envs"
+
 backup_and_link() {
   if [[ ! -d "$BACKUP_DIR" ]]; then
     echo "==> create the backup directory"
@@ -28,21 +30,20 @@ backup_and_link() {
   done
 }
 
-XDG_BASE_DIR_NAME=".config"
-XDG_BASE_DIR_ROOT="$HOME/$XDG_BASE_DIR_NAME"
+XDG_CONFIG_HOME_DIR="$(basename $XDG_CONFIG_HOME)"
 
 # HOME
 BACKUP_DIR="$HOME/old_dotfiles"
-EXCLUDE_NAME="$XDG_BASE_DIR_NAME"
-DOT_ENTITY_ROOT="$HOME/dotfiles/dot"
+EXCLUDE_NAME="$XDG_CONFIG_HOME_DIR"
+DOT_ENTITY_ROOT="$DOTFILES/dot"
 DOT_OLD_ROOT="$HOME"
 DOT_LINK_ROOT="$HOME"
 backup_and_link
 
 # XDG Base Directory
-BACKUP_DIR="$BACKUP_DIR/$XDG_BASE_DIR_NAME"
+BACKUP_DIR="$BACKUP_DIR/$XDG_CONFIG_HOME_DIR"
 EXCLUDE_NAME=""
-DOT_ENTITY_ROOT="$DOT_ENTITY_ROOT/$XDG_BASE_DIR_NAME"
-DOT_OLD_ROOT="$XDG_BASE_DIR_ROOT"
-DOT_LINK_ROOT="$XDG_BASE_DIR_ROOT"
+DOT_ENTITY_ROOT="$DOT_ENTITY_ROOT/$XDG_CONFIG_HOME_DIR"
+DOT_OLD_ROOT="$XDG_CONFIG_HOME"
+DOT_LINK_ROOT="$XDG_CONFIG_HOME"
 backup_and_link

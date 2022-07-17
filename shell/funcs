@@ -15,6 +15,15 @@ _platform() {
   esac
 }
 
-_do_nothing() {}
+_do_nothing() {
+  true
+}
+
+_pathprepend() {
+  echo ":$PATH:" | grep ":$1:" > /dev/null 2>&1
+  if [[ $? != 0 ]]; then
+    export PATH="$1:$PATH"
+  fi
+}
 
 # vim:ft=sh
