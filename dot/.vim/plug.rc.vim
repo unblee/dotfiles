@@ -201,7 +201,8 @@ call plug#begin(s:plugged_dir)
   " post install (yarn install | npm install) then load plugin only for editing supported files
   Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': [ 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html' ] }
+  \ 'for': [ 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'graphql', 'vue', 'svelte', 'html' ] }
+  "\ 'for': [ 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html' ] }
 
   call plug#end()
 " }}
