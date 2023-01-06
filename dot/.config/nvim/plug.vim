@@ -1,5 +1,5 @@
 " vim-plugの自動インストール
-let s:plug_dir = expand("~/.vim-plug")
+let s:plug_dir = "$HOME/.vim-plug"
 let s:plugged_dir = expand(s:plug_dir . "/plugged")
 let &runtimepath = s:plug_dir . "," . &runtimepath
 if !isdirectory(s:plugged_dir)
@@ -203,6 +203,13 @@ call plug#begin(s:plugged_dir)
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': [ 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'graphql', 'vue', 'svelte', 'html' ] }
   "\ 'for': [ 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html' ] }
+
+  function! UpdateRemotePlugins(...)
+    " Needed to refresh runtime files
+    let &rtp=&rtp
+    UpdateRemotePlugins
+  endfunction
+  Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
 
   call plug#end()
 " }}
