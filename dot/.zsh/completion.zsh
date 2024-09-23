@@ -46,3 +46,6 @@ autoload -Uz compinit && compinit
 # git
 alias g="git"
 compdef g="git"
+
+# gcloud
+source $(brew --prefix)/share/zsh/site-functions/_google_cloud_sdk

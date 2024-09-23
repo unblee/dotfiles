@@ -18,7 +18,7 @@ eval "$(sheldon source)"
 # activate mise
 if _has mise; then
   eval "$($HOMEBREW_PREFIX/bin/mise activate zsh)"
-end
+fi
 
 # export ruby gems path
 # If not run in .zshrc, system default ruby will be used.
