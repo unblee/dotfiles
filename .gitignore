@@ -4,3 +4,4 @@
 /dot/.config/karabiner/assets/complex_modifications/*
 !/dot/.config/karabiner/assets/complex_modifications/mysettings.json
 Brewfile.lock.json
+lazy-lock.json

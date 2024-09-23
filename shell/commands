@@ -105,7 +105,7 @@ launch_tmux() {
 }
 
 brewdump() {
-  brew bundle dump --force --file="$HOME/dotfiles/brew/Brewfile"
+  brew bundle dump --brews --casks --taps --mas --force --file="$HOME/dotfiles/brew/Brewfile"
 }
 
 brewdumpinstall() {

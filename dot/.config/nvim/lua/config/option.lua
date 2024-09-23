@@ -18,7 +18,7 @@ vim.opt.shiftwidth = 2
 
 -- 不可視文字を表示(e.g. tab,eol)
 vim.opt.list = true
-vim.opt.listchars:append({ tab = '→ ' })
+vim.opt.listchars:append({ tab = "→ " })
 
 -- カーソルが何行目の何文字目に置かれているかを表示
 vim.opt.ruler = true
@@ -102,10 +102,10 @@ vim.opt.updatetime = 100
 
 -- undo 履歴
 vim.opt.undofile = true
-vim.opt.undodir = "$HOME/.cache/vimundofile"
+vim.opt.undodir = "/Users/unblee/.cache/vimundofile"
 
 -- <Leader>キー(\)を ; に変更
-vim.g.mapleader = ';'
+vim.g.mapleader = ";"
 
 -- don't display the mode information in the statusline
 -- vim.opt.noshowmode = true
@@ -113,10 +113,20 @@ vim.g.mapleader = ';'
 -- Character to be displayed on the inactive status line
 -- vim.opt.fillchars += "stlnc:-"
 
-vim.opt.inccommand = split
-vim.opt.pumblend = 20
+vim.opt.inccommand = "split"
+vim.opt.pumblend = 10
 
 -- swap file
 vim.opt.swapfile = false
 -- backup file
 vim.opt.backup = false
+
+-- spell
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+
+-- always show signcolumns
+vim.opt.signcolumn = "yes:2"
+
+-- truecolor
+vim.opt.termguicolors = true

@@ -1,10 +1,10 @@
 . "$HOME/dotfiles/shell/envs"
 
 # ls
-if _has exa; then
-  alias ls="exa"
-  alias ll="exa --long"
-  alias la="exa --long --all"
+if _has eza; then
+  alias ls="eza"
+  alias ll="eza --long"
+  alias la="eza --long --all"
 else
   case "$(_platform)" in
     darwin)

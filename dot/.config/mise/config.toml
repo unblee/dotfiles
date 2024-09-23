@@ -1,0 +1,20 @@
+[settings]
+# plugins can read the versions files used by other version managers (if enabled by the plugin)
+# for example, .nvmrc in the case of node's nvm
+legacy_version_file = true # enabled by default (unlike asdf)
+
+# configure `mise install` to always keep the downloaded archive
+always_keep_download = false        # deleted after install by default
+always_keep_install = false         # deleted on failure by default
+
+not_found_auto_install = true
+
+# configure messages displayed when entering directories with config files
+status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
+
+# enable experimental features
+experimental = true
+
+[tools]
+terraform = "latest"
+"npm:vim-language-server" = "latest"

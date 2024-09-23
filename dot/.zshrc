@@ -15,6 +15,11 @@ eval "$(starship init zsh)"
 # load sheldon
 eval "$(sheldon source)"
 
+# activate mise
+if _has mise; then
+  eval "$($HOMEBREW_PREFIX/bin/mise activate zsh)"
+end
+
 # export ruby gems path
 # If not run in .zshrc, system default ruby will be used.
 _pathprepend "$(ruby -e 'print Gem.user_dir + "/bin"')"

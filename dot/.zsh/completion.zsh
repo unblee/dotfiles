@@ -38,9 +38,6 @@ if _has rustup; then
   rustup completions zsh cargo > "$compdir/_cargo"
 fi
 
-# asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
-
 # NOTE: set FPATH before compinit
 export FPATH="$compdir:$FPATH"
 

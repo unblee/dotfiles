@@ -78,6 +78,10 @@ fi
 # 1Password SSH agent
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
+# Docker cli
 export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+
+# mise
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 # vim:ft=sh
