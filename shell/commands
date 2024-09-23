@@ -1,5 +1,5 @@
 vip() {
-  local F=$(files|fzf --reverse --height 70%)
+  local F=$(fd|fzf --reverse --height 70%)
   if [[ "$F" != "" ]]; then
     vim "$F" || :
   fi

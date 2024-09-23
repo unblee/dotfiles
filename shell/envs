@@ -73,6 +73,7 @@ if _has brew; then
   _pathprepend "$(brew --prefix make)/libexec/gnubin"
   _pathprepend "$(brew --prefix ruby)/bin"
   _pathprepend "$(brew --prefix gnu-time)/libexec/gnubin"
+  _pathprepend "$(brew --prefix findutils)/libexec/gnubin"
 fi
 
 # 1Password SSH agent
