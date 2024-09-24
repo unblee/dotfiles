@@ -102,7 +102,7 @@ vim.opt.updatetime = 100
 
 -- undo 履歴
 vim.opt.undofile = true
-vim.opt.undodir = "/Users/unblee/.cache/vimundofile"
+vim.opt.undodir = vim.fn.expand("~/.cache/vimundofile")
 
 -- <Leader>キー(\)を ; に変更
 vim.g.mapleader = ";"
