@@ -7,7 +7,9 @@ vip() {
 
 cip() {
   local TD=`git rev-parse --show-toplevel 2> /dev/null`
-  cd $TD/`files -d $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`
+  if [[ "$TD" != "" ]]; then
+    cd $TD/`fd --type=directory . $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`
+  fi
 }
 
 gout() {
