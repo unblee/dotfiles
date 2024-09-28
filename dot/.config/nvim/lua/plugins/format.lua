@@ -9,6 +9,8 @@ return {
 				terraform = { "terraform_fmt" },
 				javascript = { "biome" },
 				typescript = { "biome" },
+				javascriptreact = { "biome" },
+				typescriptreact = { "biome" },
 			},
 			format_after_save = {},
 		},

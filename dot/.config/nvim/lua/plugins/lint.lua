@@ -9,6 +9,8 @@ return {
 				rust = { "clippy" },
 				javascript = { "biomejs" },
 				typescript = { "biomejs" },
+				javascriptreact = { "biomejs" },
+				typescriptreact = { "biomejs" },
 				ruby = { "rubocop" },
 				terraform = { "tflint", "tfsec" },
 			}
