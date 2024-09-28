@@ -23,6 +23,7 @@ return {
 				"markdown",
 				"lazy",
 				"TelescopePrompt",
+				"help",
 			},
 			highlight = true,
 		},

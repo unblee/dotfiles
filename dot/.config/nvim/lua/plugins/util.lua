@@ -54,11 +54,11 @@ return {
 		},
     -- stylua: ignore
 		keys = {
-			{ "<leader><leader>", mode = { "n", "x", "o" }, function() require("hop").hint_words() end },
-			{ "<leader>j", mode = { "n", "x", "o" }, function() require("hop").hint_lines_skip_whitespace({ direction = require("hop.hint").HintDirection.AFTER_CURSOR }) end },
-			{ "<leader>k", mode = { "n", "x", "o" }, function() require("hop").hint_lines_skip_whitespace({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR }) end },
-			{ "<leader>h", mode = { "n", "x", "o" }, function() require("hop").hint_anywhere({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true }) end },
-			{ "<leader>l", mode = { "n", "x", "o" }, function() require("hop").hint_anywhere({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true }) end },
+			{ "<leader><leader>", mode = { "n", "x", "o" }, function() require("hop").hint_words({ multi_windows = true }) end },
+			{ "<leader>j", mode = { "n", "x", "o" }, function() require("hop").hint_words({ direction = require("hop.hint").HintDirection.AFTER_CURSOR }) end },
+			{ "<leader>k", mode = { "n", "x", "o" }, function() require("hop").hint_words({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR }) end },
+			{ "<leader>h", mode = { "n", "x", "o" }, function() require("hop").hint_words({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true }) end },
+			{ "<leader>l", mode = { "n", "x", "o" }, function() require("hop").hint_words({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true }) end },
 		},
 	},
 
