@@ -10,7 +10,7 @@ return {
 		},
 		keys = {
 			{
-				"f<space>",
+				"<space>",
 				mode = { "n" },
 				function()
 					local function project_root_path()
@@ -24,6 +24,7 @@ return {
 					end
 					require("neo-tree.command").execute({
 						dir = project_root_path(),
+						toggle = true,
 					})
 				end,
 			},
@@ -42,6 +43,15 @@ return {
 					enabled = true,
 				},
 				use_libuv_file_watcher = true,
+			},
+			window = {
+				width = 35,
+				mappings = {
+					["<space>"] = "disabled",
+					["l"] = "toggle_node",
+					["h"] = "close_node",
+					["e"] = "open",
+				},
 			},
 		},
 	},
