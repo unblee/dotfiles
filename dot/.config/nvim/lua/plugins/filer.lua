@@ -41,6 +41,7 @@ return {
 				},
 				follow_current_file = {
 					enabled = true,
+					leave_dirs_open = false,
 				},
 				use_libuv_file_watcher = true,
 			},
@@ -48,7 +49,7 @@ return {
 				width = 35,
 				mappings = {
 					["<space>"] = "",
-					["l"] = "toggle_node",
+					["l"] = "open",
 					["h"] = "close_node",
 					["e"] = "open",
 				},
