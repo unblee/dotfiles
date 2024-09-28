@@ -41,10 +41,7 @@ return {
 			vim.keymap.set("n", "fp", function()
 				builtin.find_files({
 					cwd = project_root_path(),
-					hidden = true,
-					no_ignore = true,
-					no_ignore_parent = true,
-					find_command = { "fd", "--hidden", "--no-ignore", "--exclude", ".git/", "--exclude", ".DS_Store" },
+					find_command = { "fd", "--hidden", "--exclude", ".git/", "--exclude", ".DS_Store" },
 				})
 			end)
 			vim.keymap.set("n", "fr", function()
