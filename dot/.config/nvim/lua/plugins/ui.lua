@@ -54,6 +54,7 @@ return {
 					"TelescopePrompt",
 					"lazy",
 					"neo-tree",
+					"neo-tree-popup",
 				},
 				handle = {
 					color = colors.bg_highlight,
