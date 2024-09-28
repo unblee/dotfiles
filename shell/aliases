@@ -62,7 +62,7 @@ alias ....='cd ../../..'
 alias vim=nvim
 
 # fd
-alias fd='fd --hidden --exclude=".git/" --exclude="node_modules/" --exclude=".DS_Store'
+alias fd='fd --hidden --exclude=".git/" --exclude="node_modules/" --exclude=".DS_Store"'
 
 # hgrep
 alias hgrep="hgrep --hidden --smart-case --glob='!.git/'"
