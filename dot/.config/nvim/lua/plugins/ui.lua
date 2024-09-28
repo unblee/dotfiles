@@ -12,6 +12,7 @@ return {
 			extensions = {
 				"quickfix",
 				"lazy",
+				"neo-tree",
 			},
 		},
 	},
@@ -42,6 +43,15 @@ return {
 			local colors = require("tokyonight.colors").setup()
 
 			require("scrollbar").setup({
+				excluded_filetypes = {
+					"cmp_docs",
+					"cmp_menu",
+					"noice",
+					"prompt",
+					"TelescopePrompt",
+					"lazy",
+					"neo-tree",
+				},
 				handle = {
 					color = colors.bg_highlight,
 				},
