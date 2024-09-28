@@ -47,7 +47,7 @@ return {
 			window = {
 				width = 35,
 				mappings = {
-					["<space>"] = "disabled",
+					["<space>"] = "",
 					["l"] = "toggle_node",
 					["h"] = "close_node",
 					["e"] = "open",
