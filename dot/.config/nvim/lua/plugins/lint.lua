@@ -13,6 +13,7 @@ return {
 				typescriptreact = { "biomejs" },
 				ruby = { "rubocop" },
 				terraform = { "tflint", "tfsec" },
+				ghaction = { "actionlint" },
 			}
 
 			-- customize linter option
