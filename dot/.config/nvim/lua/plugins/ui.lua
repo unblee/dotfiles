@@ -16,6 +16,7 @@ return {
 				"quickfix",
 				"lazy",
 				"neo-tree",
+				"toggleterm",
 			},
 		},
 	},

@@ -24,6 +24,7 @@ return {
 				"lazy",
 				"TelescopePrompt",
 				"help",
+				"toggleterm",
 			},
 			highlight = true,
 		},
