@@ -18,18 +18,18 @@ _select-history() {
 zle -N _select-history
 bindkey '^r' _select-history
 
-# cdr
-_select_recent_dir() {
-  local target=$(cdr -l | gawk '{print $2}' | fzf --reverse --no-sort --height 70% --prompt="cdr> ")
-  if [[ ! -n $target ]]; then
-    zle reset-prompt
-    return
-  fi
-  BUFFER="cd ${target}"
-  zle accept-line
-}
-zle -N _select_recent_dir
-bindkey "^[" _select_recent_dir
+# # cdr
+# _select_recent_dir() {
+#   local target=$(cdr -l | gawk '{print $2}' | fzf --reverse --no-sort --height 70% --prompt="cdr> ")
+#   if [[ ! -n $target ]]; then
+#     zle reset-prompt
+#     return
+#   fi
+#   BUFFER="cd ${target}"
+#   zle accept-line
+# }
+# zle -N _select_recent_dir
+# bindkey "^[" _select_recent_dir
 
 # ghq で管理されているディレクトリに移動
 if _has ghq; then
