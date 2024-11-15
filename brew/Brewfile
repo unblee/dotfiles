@@ -10,6 +10,7 @@ brew "openssl@3"
 brew "awscli"
 brew "bash"
 brew "bash-completion"
+brew "icu4c@76"
 brew "node"
 brew "bash-language-server"
 brew "bat"
@@ -65,13 +66,17 @@ brew "ruby"
 brew "ruff"
 brew "rust-analyzer"
 brew "sheldon"
+brew "sshpass"
 brew "starship"
 brew "stylua"
 brew "tealdeer"
 brew "terraform-ls"
+brew "tflint"
+brew "tfsec"
 brew "tmux"
 brew "tree"
 brew "typescript-language-server"
+brew "velero"
 brew "vscode-langservers-extracted"
 brew "watch"
 brew "wget"
@@ -110,7 +115,6 @@ cask "vlc"
 cask "wireshark"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
-mas "Battery Indicator", id: 1206020918
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Logic Pro", id: 634148309
@@ -120,4 +124,3 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "RunCat", id: 1429033973
 mas "Slack", id: 803453959
-mas "The Unarchiver", id: 425424353
