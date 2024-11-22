@@ -6,9 +6,9 @@ vip() {
 }
 
 cip() {
-  local TD=`git rev-parse --show-toplevel 2> /dev/null`
-  if [[ "$TD" != "" ]]; then
-    cd $TD/`fd --type=directory . $TD|sed "s|${TD}/||g;s|^$|\.|"|fzf --reverse --height 70%`
+  dest="$(fd --type=directory .|fzf --reverse --height 70%)"
+  if [[ "$dest" != "" ]];then
+    cd "$dest"
   fi
 }
 
