@@ -1,0 +1,5 @@
+font-family = "UDEV Gothic 35NF Regular"
+font-feature = "-liga"
+font-feature = "-dlig"
+font-feature = "-calt"
+theme = "Tomorrow Night Bright"
