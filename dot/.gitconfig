@@ -95,3 +95,5 @@
 	defaultBranch = main
 [ghq]
   root = ~/ghq/src
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/

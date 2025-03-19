@@ -30,7 +30,7 @@ backup_and_link() {
   done
 }
 
-XDG_CONFIG_HOME_DIR="$(basename $XDG_CONFIG_HOME)"
+XDG_CONFIG_HOME_DIR=".config"
 
 # HOME
 BACKUP_DIR="$HOME/old_dotfiles"
