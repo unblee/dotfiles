@@ -1,12 +1,24 @@
-!/dot/.config/karabiner/assets/complex_modifications/mysettings.json
-!/dot/.zsh/completions/.gitkeep
-/dot/.config/karabiner/assets/complex_modifications/*
-/dot/.config/karabiner/automatic_backups/
+# .config
 /dot/.config/gcloud/
 /dot/.config/gh/
 /dot/.config/github-copilot/
 /dot/.config/iterm2/
 /dot/.config/raycast/
+
+# karabiner
+/dot/.config/karabiner/assets/complex_modifications/*
+/dot/.config/karabiner/automatic_backups/
+!/dot/.config/karabiner/assets/complex_modifications/mysettings.json
+
+# zed
+/dot/.config/zed/*
+!/dot/.config/zed/keymap.json
+!/dot/.config/zed/settings.json
+
+# zsh
 /dot/.zsh/completions/*
+!/dot/.zsh/completions/.gitkeep
+
+# single files
 Brewfile.lock.json
 lazy-lock.json
