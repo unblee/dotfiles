@@ -1,0 +1,100 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "assistant": {
+    "version": "2",
+    "default_model": {
+      // "provider": "zed.dev",
+      // "model": "claude-3-7-sonnet-latest"
+      "provider": "copilot_chat",
+      "model": "copilot-chat"
+    }
+  },
+  "features": {
+    // Which edit prediction provider to use.
+    "edit_prediction_provider": "copilot"
+  },
+  "edit_predictions": {
+    "disabled_globs": [
+      "**/.env*",
+      "**/.envrc*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.cert",
+      "**/*.crt",
+      "**/.dev.vars",
+      "**/secrets.yml"
+    ],
+    "mode": "eager",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_assistant": false
+  },
+  "icon_theme": "Catppuccin Frappé",
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "buffer_font_family": "UDEV Gothic 35NF",
+  "format_on_save": "on",
+  "formatter": "auto",
+  "use_smartcase_search": true,
+  "theme": {
+    "mode": "system",
+    "light": "One Dark",
+    "dark": "One Dark"
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "gutter_debounce": null,
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    }
+  },
+  "lsp": {
+    "terraform-ls": {
+      "initialization_options": {
+        "experimentalFeatures": {
+          "prefillRequiredFields": true
+        }
+      }
+    },
+    "snippet-completion-server": {
+      "settings": {
+        "max_completion_items": 20,
+        "snippets_first": false,
+        "feature_words": true,
+        "feature_snippets": true,
+        "feature_paths": true,
+        "feature_unicode_input": false
+      }
+    }
+  },
+  "languages": {
+    "Terraform": {
+      "code_actions_on_format": {
+        "source.formatAll.terraform": true
+      }
+    }
+  }
+}
